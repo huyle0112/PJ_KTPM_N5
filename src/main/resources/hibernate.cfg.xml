@@ -1,0 +1,20 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">npg_18epPACiWNov</property>
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://ep-super-forest-a11ei7rd-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+        </property>
+        <property name="hibernate.connection.username">neondb_owner</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="show_sql">true</property>
+        <!--  Mapping  -->
+        <mapping class="model.Household"/>
+        <mapping class="model.Residence"/>
+        <mapping class="model.Room"/>
+        <mapping class="model.Citizen"/>
+        <mapping class="model.PaidHousehold"/>
+        <mapping class="model.ResidentCharge"/>
+    </session-factory>
+</hibernate-configuration>
