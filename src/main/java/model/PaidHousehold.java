@@ -24,6 +24,9 @@ public class PaidHousehold {
     @Column(name = "amount_paid")
     private Integer amountPaid;
 
+    public PaidHousehold() {
+    }
+
     public Integer getId() {
         return id;
     }

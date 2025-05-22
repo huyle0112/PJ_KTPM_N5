@@ -16,6 +16,9 @@ public class Household {
     @Column(name = "address", length = 200)
     private String address;
 
+    public Household() {
+    }
+
     public Integer getId() {
         return id;
     }

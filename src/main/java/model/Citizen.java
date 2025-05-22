@@ -38,6 +38,9 @@ public class Citizen {
     @JoinColumn(name = "roomid")
     private Room roomid;
 
+    public Citizen() {
+    }
+
     public Integer getId() {
         return id;
     }

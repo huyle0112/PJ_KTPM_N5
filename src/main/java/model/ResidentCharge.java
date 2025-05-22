@@ -41,6 +41,9 @@ public class ResidentCharge {
     @Column(name = "in_complete")
     private Boolean inComplete;
 
+    public ResidentCharge() {
+    }
+
     public UUID getId() {
         return id;
     }

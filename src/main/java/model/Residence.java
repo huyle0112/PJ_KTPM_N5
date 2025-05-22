@@ -21,6 +21,9 @@ public class Residence {
     @Column(name = "relationshiptoowner", length = 50)
     private String relationshiptoowner;
 
+    public Residence() {
+    }
+
     public ResidenceId getId() {
         return id;
     }
