@@ -11,7 +11,7 @@ public class Household {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "headid")
-    private Citizen headid;
+    private Citizen head;
 
     @Column(name = "address", length = 200)
     private String address;
@@ -27,12 +27,12 @@ public class Household {
         this.id = id;
     }
 
-    public Citizen getHeadid() {
-        return headid;
+    public Citizen getHead() {
+        return head;
     }
 
-    public void setHeadid(Citizen headid) {
-        this.headid = headid;
+    public void setHead(Citizen head) {
+        this.head = head;
     }
 
     public String getAddress() {
