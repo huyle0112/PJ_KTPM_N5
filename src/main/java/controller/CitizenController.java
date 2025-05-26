@@ -8,10 +8,10 @@ import org.hibernate.Session;
 import java.util.List;
 public class CitizenController {
 
-    public List<Citizen> getCitizensOfHousehold(int householdId) {
+    public List<Citizen> getAllCitizens() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);
-            return dao.findCitizensOfHousehold(householdId);
+            return dao.findAll();
         }
     }
 
