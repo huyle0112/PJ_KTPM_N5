@@ -25,50 +25,110 @@ public class main {
             }
         }
 
-        // Gọi các hàm kiểm thử cho CitizenController và HouseholdController
-        testCitizenController();
-        testHouseholdController();
+        // Gọi các hàm kiểm thử mới cho SearchController
+        testSearchCitizenByName();
+        testSearchHouseholdByName();
     }
 
-    // Hàm kiểm thử cho CitizenController
-    private static void testCitizenController() {
-        System.out.println("\n=== Kiểm thử CitizenController ===");
-        // Mở một Session mới cho CitizenController
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            CitizenController citizenController = new CitizenController(session);
-            try {
-                List<Citizen> citizens = citizenController.timNhanKhau("Nguyen", null, null);
-                if (citizens.isEmpty()) {
-                    System.out.println("Không tìm thấy nhân khẩu nào.");
-                } else {
-                    for (Citizen citizen : citizens) {
-                        System.out.println("Nhân khẩu: " + citizen.getFullname() + ", ID: " + citizen.getId());
-                    }
+    // Hàm kiểm thử tìm kiếm nhân khẩu theo tên với nhiều trường hợp
+    private static void testSearchCitizenByName() {
+        SearchController searchController = new SearchController();
+        System.out.println("\n=== Kiểm thử tìm kiếm nhân khẩu theo tên ===");
+
+        // Trường hợp 1: Tìm kiếm với tên "Nguyen"
+        System.out.println("Tìm kiếm nhân khẩu với tên 'Nguyen':");
+        try {
+            List<Citizen> citizens = searchController.timNhanKhauTheoTen("Nguyen");
+            if (citizens.isEmpty()) {
+                System.out.println("Không tìm thấy nhân khẩu nào với tên 'Nguyen'.");
+            } else {
+                for (Citizen citizen : citizens) {
+                    System.out.println("Nhân khẩu: " + citizen.getFullname() + ", ID: " + citizen.getId());
                 }
-            } catch (Exception e) {
-                System.err.println("Lỗi tìm nhân khẩu: " + e.getMessage());
             }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm nhân khẩu với tên 'Nguyen': " + e.getMessage());
+        }
+
+        // Trường hợp 2: Tìm kiếm với tên "Le"
+        System.out.println("\nTìm kiếm nhân khẩu với tên 'Le':");
+        try {
+            List<Citizen> citizens = searchController.timNhanKhauTheoTen("Le");
+            if (citizens.isEmpty()) {
+                System.out.println("Không tìm thấy nhân khẩu nào với tên 'Le'.");
+            } else {
+                for (Citizen citizen : citizens) {
+                    System.out.println("Nhân khẩu: " + citizen.getFullname() + ", ID: " + citizen.getId());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm nhân khẩu với tên 'Le': " + e.getMessage());
+        }
+
+        // Trường hợp 3: Tìm kiếm với tên không tồn tại (giả lập kiểm tra không tìm thấy)
+        System.out.println("\nTìm kiếm nhân khẩu với tên 'NonExistentName':");
+        try {
+            List<Citizen> citizens = searchController.timNhanKhauTheoTen("NonExistentName");
+            if (citizens.isEmpty()) {
+                System.out.println("Không tìm thấy nhân khẩu nào với tên 'NonExistentName'.");
+            } else {
+                for (Citizen citizen : citizens) {
+                    System.out.println("Nhân khẩu: " + citizen.getFullname() + ", ID: " + citizen.getId());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm nhân khẩu với tên 'NonExistentName': " + e.getMessage());
         }
     }
 
-    // Hàm kiểm thử cho HouseholdController
-    private static void testHouseholdController() {
-        System.out.println("\n=== Kiểm thử HouseholdController ===");
-        // Mở một Session mới cho HouseholdController
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            HouseholdController householdController = new HouseholdController(session);
-            try {
-                List<Household> households = householdController.timHoKhau("Le", null);
-                if (households.isEmpty()) {
-                    System.out.println("Không tìm thấy hộ khẩu nào.");
-                } else {
-                    for (Household household : households) {
-                        System.out.println("Hộ khẩu: " + household.getHead().getFullname() + ", ID: " + household.getId());
-                    }
+    // Hàm kiểm thử tìm kiếm hộ khẩu theo tên chủ hộ với nhiều trường hợp
+    private static void testSearchHouseholdByName() {
+        SearchController searchController = new SearchController();
+        System.out.println("\n=== Kiểm thử tìm kiếm hộ khẩu theo tên chủ hộ ===");
+
+        // Trường hợp 1: Tìm kiếm với tên chủ hộ "Le"
+        System.out.println("Tìm kiếm hộ khẩu với tên chủ hộ 'Le':");
+        try {
+            List<Household> households = searchController.timHoKhauTheoTen("Le");
+            if (households.isEmpty()) {
+                System.out.println("Không tìm thấy hộ khẩu nào với tên chủ hộ 'Le'.");
+            } else {
+                for (Household household : households) {
+                    System.out.println("Hộ khẩu: " + household.getHead().getFullname() + ", ID: " + household.getId());
                 }
-            } catch (Exception e) {
-                System.err.println("Lỗi tìm hộ khẩu: " + e.getMessage());
             }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm hộ khẩu với tên chủ hộ 'Le': " + e.getMessage());
+        }
+
+        // Trường hợp 2: Tìm kiếm với tên chủ hộ "Nguyen"
+        System.out.println("\nTìm kiếm hộ khẩu với tên chủ hộ 'Nguyen':");
+        try {
+            List<Household> households = searchController.timHoKhauTheoTen("Nguyen");
+            if (households.isEmpty()) {
+                System.out.println("Không tìm thấy hộ khẩu nào với tên chủ hộ 'Nguyen'.");
+            } else {
+                for (Household household : households) {
+                    System.out.println("Hộ khẩu: " + household.getHead().getFullname() + ", ID: " + household.getId());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm hộ khẩu với tên chủ hộ 'Nguyen': " + e.getMessage());
+        }
+
+        // Trường hợp 3: Tìm kiếm với tên chủ hộ không tồn tại (giả lập kiểm tra không tìm thấy)
+        System.out.println("\nTìm kiếm hộ khẩu với tên chủ hộ 'NonExistentName':");
+        try {
+            List<Household> households = searchController.timHoKhauTheoTen("NonExistentName");
+            if (households.isEmpty()) {
+                System.out.println("Không tìm thấy hộ khẩu nào với tên chủ hộ 'NonExistentName'.");
+            } else {
+                for (Household household : households) {
+                    System.out.println("Hộ khẩu: " + household.getHead().getFullname() + ", ID: " + household.getId());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Lỗi tìm hộ khẩu với tên chủ hộ 'NonExistentName': " + e.getMessage());
         }
     }
 }
