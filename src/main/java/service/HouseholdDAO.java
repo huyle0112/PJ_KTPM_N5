@@ -17,5 +17,4 @@ public class HouseholdDAO extends GenericDAO<Household> {
                     .setParameter("name", "%"+name+"%")
                     .getResultList();
     }
-
 }
