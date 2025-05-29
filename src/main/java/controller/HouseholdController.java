@@ -3,6 +3,7 @@ package controller;
 import model.Citizen;
 import model.Household;
 import service.CitizenDAO;
+import service.HibernateUtil;
 import service.HouseholdDAO;
 
 import java.util.List;
@@ -11,54 +12,49 @@ import org.hibernate.Session;
 
 public class HouseholdController {
 
-    private final Session session;
-
-    public HouseholdController(Session session) {
-        this.session = session;
-    }
-
     public List<Household> getAllHouseholds() {
-        List<Household> households = null;
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Household> households = null;
             HouseholdDAO householdDAO = new HouseholdDAO(session);
             households = householdDAO.findAll();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return households;
         }
-        return households;
+
     }
 
     public Household getHouseholdById(Integer id) {
-        Household household = null;
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Household household = null;
             HouseholdDAO householdDAO = new HouseholdDAO(session);
-            household = householdDAO.findById(id); // Assuming GenericDAO has findById()
-        } catch (Exception e) {
+            household = householdDAO.findById(id);
+            return household;
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
-        return household;
+        return null;
     }
 
     public List<Household> findHouseholdsByOwnerName(String ownerName) {
-        List<Household> households = null;
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Household> households = null;
             HouseholdDAO householdDAO = new HouseholdDAO(session);
             households = householdDAO.findByOwnerName(ownerName);
+            return households;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return households;
+        return null;
     }
 
     public boolean addHousehold(Household household) {
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             HouseholdDAO householdDAO = new HouseholdDAO(session);
             if (household.getHead() == null || household.getHead().getId() == null) {
                 System.err.println("Household head is required.");
                 return false;
             }
-
-            householdDAO.save(household); 
+            householdDAO.save(household);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +63,7 @@ public class HouseholdController {
     }
 
     public boolean updateHousehold(Household household) {
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             HouseholdDAO householdDAO = new HouseholdDAO(session);
             householdDAO.update(household);
             return true;
@@ -78,7 +74,7 @@ public class HouseholdController {
     }
 
     public boolean deleteHousehold(Integer householdId) {
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             HouseholdDAO householdDAO = new HouseholdDAO(session);
             Household household = householdDAO.findById(householdId);
             if (household != null) {
@@ -94,9 +90,9 @@ public class HouseholdController {
     }
 
     public boolean changeHouseholdHead(Integer householdId, Integer newHeadId) {
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             HouseholdDAO householdDAO = new HouseholdDAO(session);
-            CitizenDAO citizenDAO = new CitizenDAO(session); // Assuming CitizenDAO exists
+            CitizenDAO citizenDAO = new CitizenDAO(session);
 
             Household household = householdDAO.findById(householdId);
             if (household == null) {
@@ -104,7 +100,7 @@ public class HouseholdController {
                 return false;
             }
 
-            Citizen newHead = citizenDAO.findById(newHeadId); // Assuming CitizenDAO has findById
+            Citizen newHead = citizenDAO.findById(newHeadId);
             if (newHead == null) {
                 System.err.println("New head citizen not found with ID: " + newHeadId);
                 return false;
@@ -120,13 +116,14 @@ public class HouseholdController {
     }
 
     public List<Citizen> getMembersByHouseholdId(Integer householdId) {
-        List<Citizen> members = null;
-        try {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Citizen> members = null;
             CitizenDAO citizenDAO = new CitizenDAO(session);
             members = citizenDAO.findCitizensOfHousehold(householdId);
+            return members;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return members;
+        return null;
     }
 }
