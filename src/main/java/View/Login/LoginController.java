@@ -1,4 +1,4 @@
-package UI.Login;
+package View.Login;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

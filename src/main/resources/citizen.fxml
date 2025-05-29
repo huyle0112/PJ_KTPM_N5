@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="View.CitizenManagement.CitizenViewController">
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="txtSearch" promptText="Tìm tên nhân khẩu"/>
+            <Button text="Tìm" onAction="#onSearch"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Thêm" onAction="#onAdd"/>
+            <Button text="Sửa" onAction="#onEdit"/>
+            <Button text="Xoá" onAction="#onDelete"/>
+        </HBox>
+    </top>
+    <center>
+        <TableView fx:id="citizenTable" prefHeight="400.0">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="fullnameColumn" text="Họ tên" prefWidth="150"/>
+                <TableColumn fx:id="dobColumn" text="Ngày sinh" prefWidth="100"/>
+                <TableColumn fx:id="placeOfBirthColumn" text="Nơi sinh" prefWidth="120"/>
+                <TableColumn fx:id="occupationColumn" text="Nghề nghiệp" prefWidth="120"/>
+                <TableColumn fx:id="nationalIdColumn" text="CCCD" prefWidth="100"/>
+                <TableColumn fx:id="statusColumn" text="Tình trạng cư trú" prefWidth="120"/>
+                <TableColumn fx:id="roomColumn" text="Căn hộ" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <Label fx:id="lblStatus" text="Sẵn sàng">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </Label>
+    </bottom>
+</BorderPane>
