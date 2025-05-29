@@ -6,7 +6,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "paid_room")
-public class PaidRoom {
+public class PaidHousehold {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -26,7 +26,7 @@ public class PaidRoom {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "charge_id")
-    private ResidentCharge charge;
+    private ResidentCharge residentCharge;
 
     public Integer getId() {
         return id;
@@ -69,11 +69,11 @@ public class PaidRoom {
     }
 
     public ResidentCharge getCharge() {
-        return charge;
+        return residentCharge;
     }
 
     public void setCharge(ResidentCharge charge) {
-        this.charge = charge;
+        this.residentCharge = charge;
     }
 
 }

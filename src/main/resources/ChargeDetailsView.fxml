@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <Pane maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0">
+               <children>
+                  <Button fx:id="updateChargeButton" mnemonicParsing="false" text="Update" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="451.0" prefWidth="800.0">
+               <children>
+                  <VBox prefHeight="451.0" prefWidth="150.0">
+                     <children>
+                        <Label text="Tên" />
+                        <Label text="Loại khoản thu" />
+                        <Label text="Ngày tạo" />
+                        <Label text="Số tiền/m2" fx:id="moneyLabel"/>
+                        <Label text="Mô tả" />
+                        <Label text="Tổng thu" />
+                        <Label text="Số hộ đã thu" />
+                        <Label fx:id="listPaidTextField" text="Hộ đã thu" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="451.0" prefWidth="650.0">
+                     <children>
+                        <TextField fx:id="nameTextField" />
+                        <Label fx:id="typeLabel" text="Label" />
+                        <Label fx:id="createDateLabel" text="Label" />
+                        <TextField fx:id="moneyTextField" />
+                        <TextField fx:id="descriptionTextField" />
+                        <Label fx:id="sumChargeLabel" text="Label" />
+                        <Label fx:id="paidCountLabel" text="Label" />
+                        <ScrollPane prefHeight="0.0" prefWidth="650.0">
+                           <content>
+                              <VBox fx:id="listPaidVBox" prefHeight="0.0" prefWidth="600.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label minWidth="-Infinity" text="Khoản thu" />
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

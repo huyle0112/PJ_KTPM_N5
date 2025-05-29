@@ -4,9 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -40,6 +43,9 @@ public class ResidentCharge {
 
     @Column(name = "in_complete")
     private Boolean inComplete;
+
+    @OneToMany(mappedBy = "residentCharge", fetch = FetchType.LAZY)
+    private List<PaidHousehold> paidHouseholdList;
 
     public ResidentCharge() {
     }
@@ -116,4 +122,11 @@ public class ResidentCharge {
         this.inComplete = inComplete;
     }
 
+    public List<PaidHousehold> getPaidHouseholdList() {
+        return paidHouseholdList;
+    }
+
+    public void setPaidHouseholdList(List<PaidHousehold> paidHouseholdList) {
+        this.paidHouseholdList = paidHouseholdList;
+    }
 }

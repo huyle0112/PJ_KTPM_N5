@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ResidentChargeViewController">
+   <right>
+      <Pane maxHeight="470.0" maxWidth="100.0" minHeight="470.0" minWidth="100.0" prefHeight="470.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="470.0" prefWidth="99.0">
+               <children>
+                  <Button fx:id="addPresidentChargeButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="84.0" text="Thêm khoản thu" />
+                  <Button fx:id="chargeButton" mnemonicParsing="false" text="Thu phí" />
+                  <Button fx:id="accountantLogOutButton" mnemonicParsing="false" text="Đăng xuất" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </right>
+   <top>
+      <Pane maxHeight="80.0" maxWidth="800.0" minHeight="80.0" minWidth="800.0" prefHeight="80.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="800.0">
+               <children>
+                  <Label minWidth="-Infinity" prefHeight="27.0" prefWidth="797.0" text="Quản lý khoản thu chung cư Blue Moon" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Lọc" />
+                        <MenuButton fx:id="voluntaryFilterButton" mnemonicParsing="false" text="Lọc theo loại khoản thu">
+                          <items>
+                            <MenuItem fx:id="allTypeItem" mnemonicParsing="false" text="Tất cả" />
+                            <MenuItem fx:id="voluntaryItem" mnemonicParsing="false" text="Tự nguyện" />
+                              <MenuItem fx:id="mandatoryItem" mnemonicParsing="false" text="Bắt buộc" />
+                          </items>
+                        </MenuButton>
+                        <MenuButton fx:id="inCompleteFilterButton" mnemonicParsing="false" text="Lọc theo độ hoàn thành">
+                          <items>
+                            <MenuItem fx:id="allItem" mnemonicParsing="false" text="Tất cả" />
+                            <MenuItem fx:id="completeItem" mnemonicParsing="false" text="Hoàn thành" />
+                              <MenuItem fx:id="inCompleteItem" mnemonicParsing="false" text="Chưa hoàn thành" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="findKeyTextField" />
+                        <Button fx:id="searchChargeButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="85.0" text="Tìm kiếm" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <ScrollPane maxHeight="470.0" maxWidth="700.0" minHeight="470.0" minWidth="700.0" prefHeight="470.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="listOfPresidentChargeBox" prefHeight="0.0" prefWidth="650.0" spacing="10.0" />
+         </content>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </ScrollPane>
+   </left>
+</BorderPane>

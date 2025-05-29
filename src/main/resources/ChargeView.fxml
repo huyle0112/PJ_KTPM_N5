@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ChargeViewController">
+   <bottom>
+      <Pane maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0">
+               <children>
+                  <Button fx:id="addChargeButton" mnemonicParsing="false" text="Add" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="451.0" prefWidth="800.0">
+               <children>
+                  <VBox prefHeight="451.0" prefWidth="142.0">
+                     <children>
+                        <Label text="Phòng" />
+                        <Label text="Người nộp" />
+                        <Label text="Khoản thu" />
+                        <Label fx:id="moneyLabel" text="Số tiền" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="451.0" prefWidth="435.0">
+                     <children>
+                        <ComboBox fx:id="roomComboBox" prefHeight="39.0" prefWidth="464.0" />
+                        <TextField fx:id="nameTextField" />
+                        <ComboBox fx:id="residentChargesComboBox" prefHeight="39.0" prefWidth="464.0" />
+                        <TextField fx:id="moneyTextField" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane maxHeight="50.0" maxWidth="800.0" minHeight="50.0" minWidth="800.0" prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label minWidth="-Infinity" text="Thu phí" />
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

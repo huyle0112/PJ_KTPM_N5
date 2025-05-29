@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox fx:controller="view.ResidentChargeCardController" xmlns:fx="http://javafx.com/fxml/1" spacing="5" style="-fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #f9f9f9;" prefWidth="400">
+    <children>
+        <Label fx:id="nameLabel"/>
+        <Label fx:id="typeLabel"/>
+        <Label fx:id="createdDateLabel"/>
+        <Label fx:id="moneyLabel"/>
+        <Label fx:id="descriptionLabel"/>
+        <Label fx:id="sumLabel"/>
+        <Label fx:id="countLabel"/>
+    </children>
+</VBox>
