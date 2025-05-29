@@ -13,7 +13,7 @@ public class PaidRoom {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomid")
-    private Room roomid;
+    private Room room;
 
     @Column(name = "fullname", length = 50)
     private String fullname;
@@ -37,11 +37,11 @@ public class PaidRoom {
     }
 
     public Room getRoomid() {
-        return roomid;
+        return room;
     }
 
     public void setRoomid(Room roomid) {
-        this.roomid = roomid;
+        this.room = roomid;
     }
 
     public String getFullname() {
