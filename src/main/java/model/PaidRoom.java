@@ -5,15 +5,15 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "paid_household")
-public class PaidHousehold {
+@Table(name = "paid_room")
+public class PaidRoom {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "householdid")
-    private Household householdid;
+    @JoinColumn(name = "roomid")
+    private Room roomid;
 
     @Column(name = "fullname", length = 50)
     private String fullname;
@@ -24,8 +24,9 @@ public class PaidHousehold {
     @Column(name = "amount_paid")
     private Integer amountPaid;
 
-    public PaidHousehold() {
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "charge_id")
+    private ResidentCharge charge;
 
     public Integer getId() {
         return id;
@@ -35,12 +36,12 @@ public class PaidHousehold {
         this.id = id;
     }
 
-    public Household getHouseholdid() {
-        return householdid;
+    public Room getRoomid() {
+        return roomid;
     }
 
-    public void setHouseholdid(Household householdid) {
-        this.householdid = householdid;
+    public void setRoomid(Room roomid) {
+        this.roomid = roomid;
     }
 
     public String getFullname() {
@@ -65,6 +66,14 @@ public class PaidHousehold {
 
     public void setAmountPaid(Integer amountPaid) {
         this.amountPaid = amountPaid;
+    }
+
+    public ResidentCharge getCharge() {
+        return charge;
+    }
+
+    public void setCharge(ResidentCharge charge) {
+        this.charge = charge;
     }
 
 }

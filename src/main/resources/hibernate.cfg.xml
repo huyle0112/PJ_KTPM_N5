@@ -14,7 +14,7 @@
         <mapping class="model.Residence"/>
         <mapping class="model.Room"/>
         <mapping class="model.Citizen"/>
-        <mapping class="model.PaidHousehold"/>
+        <mapping class="model.PaidRoom"/>
         <mapping class="model.ResidentCharge"/>
     </session-factory>
 </hibernate-configuration>
