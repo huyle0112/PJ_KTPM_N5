@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="View.CitizenManagement.CitizenFormViewController"
+          hgap="10" vgap="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <Label text="Họ tên:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="fullnameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Ngày sinh (yyyy-mm-dd):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="dobField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Nơi sinh:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="placeOfBirthField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Nghề nghiệp:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="occupationField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="CCCD:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="nationalIdField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Tình trạng cư trú:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="statusCombo" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Căn hộ (RoomID):" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="roomIdField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <HBox spacing="10" alignment="center" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Lưu" onAction="#onSave"/>
+        <Button text="Huỷ" onAction="#onCancel"/>
+    </HBox>
+</GridPane>
