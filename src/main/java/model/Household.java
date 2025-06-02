@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "household")
 public class Household {
     @Id
+    // TODO: Cập nhật tự động add cho các bảng khác
     @Column(name = "householdid", nullable = false)
     private Integer id;
 

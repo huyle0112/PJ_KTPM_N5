@@ -8,7 +8,9 @@ import java.time.LocalDate;
 @Table(name = "citizen")
 public class Citizen {
     @Id
-    @Column(name = "citizenid", nullable = false)
+    @Column(name = "citizenid")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "citizen_id_seq")
+    @SequenceGenerator(name = "citizen_id_seq", sequenceName = "citizen_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "fullname", length = 100)
