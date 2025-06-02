@@ -1,4 +1,4 @@
-package View.CitizenManagement;
+package view.CitizenManagement;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

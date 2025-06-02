@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="View.CitizenManagement.CitizenViewController">
+            fx:controller="view.CitizenManagement.CitizenViewController">
     <top>
         <HBox spacing="10">
             <padding>

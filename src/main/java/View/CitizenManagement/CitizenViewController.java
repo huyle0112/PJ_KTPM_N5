@@ -1,4 +1,4 @@
-package View.CitizenManagement;
+package view.CitizenManagement;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,7 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Citizen;
 import model.Room;
-
+import view.CitizenManagement.CitizenFormViewController;
 import java.time.LocalDate;
 
 public class CitizenViewController {

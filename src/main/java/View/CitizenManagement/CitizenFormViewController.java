@@ -1,4 +1,4 @@
-package View.CitizenManagement;
+package view.CitizenManagement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
