@@ -1,5 +1,6 @@
 package view.CitizenManagement;
 
+import controller.CitizenController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ public class CitizenFormViewController {
 
     private Citizen citizen;
     private boolean saveClicked = false;
+
+    private CitizenController citizenController = new CitizenController();
 
     @FXML
     public void initialize() {
@@ -52,14 +55,22 @@ public class CitizenFormViewController {
             citizen.setOccupation(occupationField.getText());
             citizen.setNationalid(nationalIdField.getText());
             citizen.setResidencyStatus(statusCombo.getValue());
-            //Demo
+
             if (!roomIdField.getText().isEmpty()) {
                 Room room = new Room();
-                room.setRoomnumber(roomIdField.getText());
+                room.setId(Integer.parseInt(roomIdField.getText()));  // sửa lấy id đúng kiểu
                 citizen.setRoomid(room);
             } else {
                 citizen.setRoomid(null);
             }
+
+            Integer id = citizen.getId();
+            if (id == null || id == 0) {
+                citizenController.addCitizen(citizen);
+            } else {
+                citizenController.updateCitizen(citizen);
+            }
+
             saveClicked = true;
             ((Stage) fullnameField.getScene().getWindow()).close();
         } catch (Exception ex) {
