@@ -73,8 +73,7 @@ public class CitizenViewController {
     private void onAdd() {
         Citizen newCitizen = showCitizenForm(null);
         if (newCitizen != null) {
-            newCitizen.setId(citizenList.size() == 0 ? 1 : citizenList.get(citizenList.size() - 1).getId() + 1);
-            citizenList.add(newCitizen);
+            citizenList.setAll(controller.getAllCitizens());
             citizenTable.setItems(citizenList);
             citizenTable.refresh();
         }

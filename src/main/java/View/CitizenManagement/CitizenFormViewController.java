@@ -23,6 +23,7 @@ public class CitizenFormViewController {
     @FXML private TextField relationToOwnerField;
     @FXML private Label relationLabel;
     @FXML private CheckBox isHeadCheckbox;
+    @FXML private TextField householdIdField;
     private Citizen citizen;
     private boolean saveClicked = false;
 
@@ -60,12 +61,12 @@ public class CitizenFormViewController {
         this.citizen = citizen;
         if (citizen != null) {
             nameField.setText(citizen.getFullname());
-            jobField.setText(citizen.getDateofbirth() != null ? citizen.getDateofbirth().toString() : "");
+            jobField.setText(citizen.getOccupation());
             placeOfBirthField.setText(citizen.getPlaceofbirth());
             occupationField.setText(citizen.getOccupation());
             nationalIdField.setText(citizen.getNationalid());
             statusCombo.setValue(citizen.getResidencyStatus());
-            roomIdField.setText(citizen.getRoomid() != null ? String.valueOf(citizen.getRoomid().getId()) : "");
+            roomIdField.setText(String.valueOf(citizen.getRoomid()));
         }
     }
 
@@ -88,16 +89,25 @@ public class CitizenFormViewController {
                 Room room = new Room();
                 room.setId(Integer.parseInt(roomIdField.getText()));
                 citizen.setRoomid(room);
-            } else {
-                citizen.setRoomid(null);
             }
 
-            Integer id = citizen.getId();
-            if (id == null || id == 0) {
-                citizenController.addCitizen(citizen);
-            } else {
-                citizenController.updateCitizen(citizen);
+            ResidencyStatus status = statusCombo.getValue();
+            Integer householdId = null;
+            String relation = null;
+            boolean isHead = false;
+
+            if (status == ResidencyStatus.Away || status == ResidencyStatus.Permanent) {
+                String householdIdStr = householdIdField.getText();
+                if (householdIdStr == null || householdIdStr.isEmpty())
+                    throw new IllegalArgumentException("Vui lòng nhập ID hộ khẩu!");
+                householdId = Integer.parseInt(householdIdStr);
+
+                isHead = isHeadCheckbox.isSelected();
+                relation = isHead ? "Head" : relationToOwnerField.getText();
             }
+
+            boolean ok = citizenController.addCitizen(citizen, householdId, relation, isHead, status);
+            if (!ok) return;
 
             saveClicked = true;
             ((Stage) nameField.getScene().getWindow()).close();
