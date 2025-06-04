@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="e26cc90f-ff0b-406a-b478-b7966962b969">
+    <data-source source="LOCAL" name="neondb@ep-super-forest-a11ei7rd-pooler.ap-southeast-1.aws.neon.tech" uuid="dfe87cb1-85f6-4ba3-a494-f1973f0d96e2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-C:/Users/manha/Bluemoon/Bluemoon/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ep-super-forest-a11ei7rd-pooler.ap-southeast-1.aws.neon.tech:5432/neondb</jdbc-url>
       <jdbc-additional-properties>

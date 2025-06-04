@@ -35,7 +35,7 @@ public class Citizen {
     @Enumerated(EnumType.STRING)
     private ResidencyStatus residencyStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "roomid")
     private Room roomid;
 
