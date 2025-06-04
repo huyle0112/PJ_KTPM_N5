@@ -12,6 +12,7 @@ module application {
     opens view to javafx.fxml;
     opens view.Login to javafx.fxml;
     opens model to org.hibernate.orm.core;
+    exports model;
     exports view;
     exports view.CitizenManagement;
     exports view.Login;
