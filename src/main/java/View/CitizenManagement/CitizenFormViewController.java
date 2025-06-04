@@ -21,7 +21,7 @@ public class CitizenFormViewController {
     private Citizen citizen;
     private boolean saveClicked = false;
 
-    private CitizenController citizenController = new CitizenController();
+    private final CitizenController citizenController = new CitizenController();
 
     @FXML
     public void initialize() {

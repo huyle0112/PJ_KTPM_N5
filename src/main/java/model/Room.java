@@ -1,15 +1,14 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "room")
 public class Room {
     @Id
     @Column(name = "roomid", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_id_seq")
+    @SequenceGenerator(name = "room_id_seq", sequenceName = "room_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "roomnumber", length = 5)

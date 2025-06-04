@@ -9,6 +9,8 @@ import java.time.Instant;
 public class PaidHousehold {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paid_room_id_seq")
+    @SequenceGenerator(name = "paid_room_id_seq", sequenceName = "paid_room_id_seq", allocationSize = 1)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
