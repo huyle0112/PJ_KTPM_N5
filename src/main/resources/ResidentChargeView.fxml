@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ResidentChargeViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ResidentChargeViewController">
    <top>
-      <Pane maxHeight="101.0" maxWidth="800.0" minHeight="80.0" minWidth="800.0" prefHeight="87.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <Pane maxHeight="101.0" maxWidth="800.0" minHeight="80.0" minWidth="800.0" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #f3f3f3;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="100.0" prefWidth="800.0">
                <children>
-                  <HBox prefHeight="34.0" prefWidth="800.0">
+                  <HBox prefHeight="27.0" prefWidth="800.0">
                      <children>
-                        <Button fx:id="accountantLogOutButton" mnemonicParsing="false" text="Home">
+                        <Button fx:id="accountantLogOutButton" mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Home">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
+                        <Region prefHeight="27.0" prefWidth="543.0" />
                         <Button fx:id="addPresidentChargeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Thêm khoản thu">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="chargeButton" mnemonicParsing="false" text="Thu phí">
+                        <Button fx:id="chargeButton" mnemonicParsing="false" style="-fx-background-color: #0eda07;" text="Thu phí">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -71,7 +73,13 @@
       </Pane>
    </top>
    <center>
-      <VBox fx:id="listOfPresidentChargeBox" prefHeight="519.0" prefWidth="800.0" spacing="10.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="listOfPresidentChargeBox" prefHeight="519.0" prefWidth="800.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding></VBox>
    </center>
    <left>
       <Region prefHeight="513.0" prefWidth="37.0" BorderPane.alignment="CENTER" />

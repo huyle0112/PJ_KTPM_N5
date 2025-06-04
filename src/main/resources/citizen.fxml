@@ -17,7 +17,7 @@
 
 <BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CitizenManagement.CitizenViewController">
     <top>
-        <HBox spacing="10">
+        <HBox spacing="10" style="-fx-background-color: f3f3f3;">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
