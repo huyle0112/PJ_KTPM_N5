@@ -19,8 +19,8 @@ module application {
     exports application;
     exports view.Login;
     exports view.Home;
-    exports view;
     exports view.CitizenManagement;
+    exports view;
     exports model;
     exports controller;
     exports service;

@@ -10,8 +10,8 @@ import view.Login.LoginMain;
 public class main1  extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("/ResidentChargeView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("/ChargeDetailsView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
             primaryStage.setScene(scene);
             primaryStage.show();
         }
