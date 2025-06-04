@@ -1,5 +1,6 @@
 package view.CitizenManagement;
 
+import controller.CitizenController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -32,6 +33,7 @@ public class CitizenViewController {
     @FXML private Label lblStatus;
 
     private ObservableList<Citizen> citizenList = FXCollections.observableArrayList();
+    private final CitizenController controller = new CitizenController();
 
     @FXML
     private void initialize() {
@@ -47,6 +49,7 @@ public class CitizenViewController {
             return new SimpleStringProperty(r == null ? "" : String.valueOf(r.getRoomnumber()));
         });
 
+        citizenList.setAll(controller.getAllCitizens());
         citizenTable.setItems(citizenList);
     }
 
@@ -93,10 +96,26 @@ public class CitizenViewController {
     private void onDelete() {
         Citizen selected = citizenTable.getSelectionModel().getSelectedItem();
         if (selected == null) {
+            new Alert(Alert.AlertType.WARNING, "Hãy chọn công dân để xóa").showAndWait();
             return;
         }
-        citizenList.remove(selected);
-        citizenTable.setItems(citizenList);
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Bạn có chắc chắn muốn xóa công dân này?");
+        confirm.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    controller.deleteCitizen(selected);
+
+                    citizenList.setAll(controller.getAllCitizens());
+                    citizenTable.setItems(citizenList);
+                    citizenTable.refresh();
+
+                    new Alert(Alert.AlertType.INFORMATION, "Đã xoá công dân thành công.").showAndWait();
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+                }
+            }
+        });
     }
 
 
