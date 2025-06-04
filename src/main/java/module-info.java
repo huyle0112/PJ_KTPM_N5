@@ -7,14 +7,20 @@ module application {
     requires org.hibernate.orm.core;
     requires java.naming;
 
-    opens view.CitizenManagement to javafx.fxml;
     opens application to javafx.fxml;
-    opens view to javafx.fxml;
     opens view.Login to javafx.fxml;
+    opens view.Home to javafx.fxml;
+    opens view to javafx.fxml;
+    opens view.CitizenManagement to javafx.fxml;
     opens model to org.hibernate.orm.core;
-    exports model;
-    exports view;
-    exports view.CitizenManagement;
-    exports view.Login;
+    opens controller to javafx.fxml;
+    opens service to javafx.fxml;
+
     exports application;
+    exports view.Login;
+    exports view.Home;
+    exports view;
+    exports model;
+    exports controller;
+    exports service;
 }
