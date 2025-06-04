@@ -1,23 +1,20 @@
 package view;
 
-import controller.CitizenController;
-import model.Citizen;
-import org.hibernate.SessionFactory;
-import service.*;
 
-public class main1 {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import view.Login.LoginMain;
 
-    public static void main(String[] args) {
-        CitizenController citizenController = new CitizenController();
-        CitizenDAO citizenDAO = new CitizenDAO(HibernateUtil.getSessionFactory().openSession());
-        Citizen citizen2 = new Citizen();
-        citizen2.setFullname("Nguyen Van Manh");
-        citizen2.setResidencyStatus(Citizen.ResidencyStatus.valueOf("Away"));
+public class main1  extends Application {
+        @Override
+        public void start(Stage primaryStage) throws Exception {
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("/ResidentChargeView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
 
-        citizenDAO.save(citizen2);
-    }
-
-
-
-
+        public static void main(String[] args) {launch(args);}
 }

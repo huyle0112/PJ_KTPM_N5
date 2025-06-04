@@ -24,8 +24,8 @@
          <children>
             <VBox prefHeight="100.0" prefWidth="800.0">
                <children>
-                  <Label minWidth="-Infinity" prefHeight="27.0" prefWidth="797.0" text="Quản lý khoản thu chung cư Blue Moon" />
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Label minWidth="-Infinity" prefHeight="17.0" prefWidth="215.0" text="Quản lý khoản thu chung cư Blue Moon" />
+                  <HBox prefHeight="57.0" prefWidth="800.0">
                      <children>
                         <Label text="Lọc" />
                         <MenuButton fx:id="voluntaryFilterButton" mnemonicParsing="false" text="Lọc theo loại khoản thu">
@@ -46,7 +46,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="findKeyTextField" />
+                        <TextField fx:id="findKeyTextField" prefHeight="25.0" prefWidth="193.0" />
                         <Button fx:id="searchChargeButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="85.0" text="Tìm kiếm" />
                      </children>
                   </HBox>
@@ -55,8 +55,8 @@
          </children>
       </Pane>
    </top>
-   <left>
-      <ScrollPane maxHeight="470.0" maxWidth="700.0" minHeight="470.0" minWidth="700.0" prefHeight="470.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+   <center>
+      <ScrollPane maxHeight="470.0" maxWidth="700.0" minHeight="441.0" minWidth="683.0" prefHeight="441.0" prefWidth="683.0" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="listOfPresidentChargeBox" prefHeight="0.0" prefWidth="650.0" spacing="10.0" />
          </content>
@@ -67,5 +67,5 @@
             <Insets left="20.0" />
          </padding>
       </ScrollPane>
-   </left>
+   </center>
 </BorderPane>

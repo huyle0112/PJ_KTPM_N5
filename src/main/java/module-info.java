@@ -20,6 +20,7 @@ module application {
     exports view.Login;
     exports view.Home;
     exports view;
+    exports view.CitizenManagement;
     exports model;
     exports controller;
     exports service;
