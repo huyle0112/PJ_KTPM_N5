@@ -16,21 +16,15 @@ public class GenericDAO<T> {
     }
 
     public void save(T entity) {
-        Transaction tx = session.beginTransaction();
         session.save(entity);
-        tx.commit();
     }
 
     public void update(T entity) {
-        Transaction tx = session.beginTransaction();
         session.update(entity);
-        tx.commit();
     }
 
     public void delete(T entity) {
-        Transaction tx = session.beginTransaction();
         session.delete(entity);
-        tx.commit();
     }
 
     public T findById(int id) {
