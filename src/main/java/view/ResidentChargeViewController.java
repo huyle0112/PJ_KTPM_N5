@@ -191,7 +191,9 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void handleCharge(ActionEvent event){
-        sceneManager.showViewWithOutController("/ChargeView.fxml","Thu phí");
+        ChargeViewController controller = new ChargeViewController();
+        controller.setParentController(this);
+        sceneManager.showViewWithController("/ChargeView.fxml", controller,"Thu phí");
     }
 
     private void exitScene(){

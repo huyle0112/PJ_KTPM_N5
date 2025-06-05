@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ChargeViewController {
+public class ChargeViewController implements BlueMoonViewController {
 
     @FXML
     private ComboBox<String> residentChargesComboBox;
@@ -43,11 +44,16 @@ public class ChargeViewController {
     @FXML
     private Button cancelButton;
 
+    private ResidentChargeViewController residentChargeViewController;
     private ObservableList<String> residentCharges = FXCollections.observableArrayList();
     private ResidentChargeController residentChargeController;
     private SceneManager sceneManager;
     private ChargeController chargeController;
     private Session session = HibernateUtil.getSessionFactory().openSession();
+
+    public void setParentController(ResidentChargeViewController parentController) {
+        this.residentChargeViewController = parentController;
+    }
 
     @FXML
     public void initialize() {
@@ -109,6 +115,6 @@ public class ChargeViewController {
     private void exitScene() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-        sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");
+        residentChargeViewController.loadData();
     }
 }
