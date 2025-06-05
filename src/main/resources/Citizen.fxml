@@ -21,7 +21,7 @@
                <TextField fx:id="txtSearch" promptText="Tìm tên nhân khẩu" />
                <Button onAction="#onSearch" text="Tìm" />
                <Region HBox.hgrow="ALWAYS" />
-            <Button onAction="#onShowStatistics" prefHeight="25.0" prefWidth="70.0" text="Thống kê" />
+               <Button onAction="#onShowStatistics" prefHeight="25.0" prefWidth="70.0" text="Thống kê" />
                <Button onAction="#onAdd" prefHeight="25.0" prefWidth="70.0" text="Thêm" />
                <Button onAction="#onEdit" prefHeight="25.0" prefWidth="70.0" text="Sửa" />
                <Button onAction="#onDelete" prefHeight="25.0" prefWidth="70.0" text="Xoá" />

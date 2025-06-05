@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0"
+<BorderPane
 	xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HouseholdManagement.HouseholdCitizenViewController">
+	xmlns:fx="http://javafx.com/fxml/1" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" fx:controller="view.HouseholdManagement.HouseholdCitizenViewController">
 	<bottom>
 		<Label fx:id="lblStatus" text="Sẵn sàng" textFill="#d07e0c">
 			<padding>
@@ -32,13 +32,14 @@
 						<Insets bottom="10" left="10" right="10" top="10" />
 					</padding>
 					<children>
-						<Button mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Back" />
+						<Button onAction="#onBack" mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Quay lại" />
 						<TextField fx:id="txtSearch" prefHeight="25.0" prefWidth="190.0" promptText="Tìm tên nhân khẩu" />
 						<Button onAction="#onSearch" prefHeight="25.0" prefWidth="45.0" text="Tìm" />
-						<Region prefHeight="25.0" prefWidth="324.0" />
-						<Button onAction="#onAdd" text="Thêm" />
-						<Button onAction="#onEdit" text="Sửa" />
-						<Button onAction="#onDelete" text="Xoá" />
+						<Region HBox.hgrow="ALWAYS" />
+						<Button onAction="#onChangeHead" text="Đổi chủ hộ" />
+						<Button onAction="#onAdd" text="Thêm nhân khẩu" />
+						<Button onAction="#onEdit" text="Sửa quan hệ" />
+						<Button onAction="#onDelete" text="Xoá khỏi hộ" />
 					</children>
 				</HBox>
 				<Region prefHeight="39.0" prefWidth="800.0" />
