@@ -20,9 +20,17 @@ public class CitizenDAO extends GenericDAO<Citizen> {
 
     public List<Citizen> findCitizensOfHousehold(int householdId) {
         Household household = session.get(Household.class, householdId);
-        String hql = "SELECT c FROM Residence r JOIN r.citizenid c WHERE r.householdid = :hid";
-        return session.createQuery(hql, Citizen.class)
+        String hql = "SELECT c, r.relationshiptoowner FROM Residence r JOIN r.citizenid c WHERE r.householdid = :hid";
+        List<Object[]> results = session.createQuery(hql, Object[].class)
                 .setParameter("hid", household)
                 .getResultList();
+        List<Citizen> citizens = new java.util.ArrayList<>();
+        for (Object[] row : results) {
+            Citizen citizen = (Citizen) row[0];
+            String relationship = (String) row[1];
+            citizen.setRelationshipToOwner(relationship);
+            citizens.add(citizen);
+        }
+        return citizens;
     }
 }

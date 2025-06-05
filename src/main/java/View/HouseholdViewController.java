@@ -87,9 +87,9 @@ public class HouseholdViewController {
                 Household selected = householdTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CitizenByHousehold.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/HouseholdCitizenView.fxml"));
                         Parent root = loader.load();
-                        view.CitizenManagement.CitizenViewController controller = loader.getController();
+                        view.HouseholdCitizenViewController controller = loader.getController();
                         controller.showCitizensOfHousehold(selected.getId());
                         Stage stage = new Stage();
                         stage.setTitle("Citizens of Household");
