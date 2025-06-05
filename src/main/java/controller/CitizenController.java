@@ -34,6 +34,9 @@ public class CitizenController {
 
     public void saveCitizensWithResidency(Citizen citizen, boolean isOwner, int householdId, String relationshipToOwner) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            if (citizen.getResidencyStatus() != ResidencyStatus.Permanent && citizen.getResidencyStatus() != ResidencyStatus.Away) {
+                Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Loại hình cư trú \" + citizen.getResidencyStatus() + \"không thể thêm vào Hộ khẩu!").showAndWait());
+            }
             CitizenDAO dao = new CitizenDAO(session);
             dao.save(citizen);
 
@@ -41,8 +44,11 @@ public class CitizenController {
             GenericDAO<Residence> residenceDAO = new GenericDAO<Residence>(Residence.class, session);
             Residence residence = new Residence();
             residence.setId(residenceId);
-            residence.setRelationshiptoowner(relationshipToOwner);
-            residenceDAO.save(residence);
+            if (isOwner) {relationshipToOwner = "Head";};
+            if (relationshipToOwner != null) {
+                residence.setRelationshiptoowner(relationshipToOwner);
+                residenceDAO.save(residence);
+            }
 
             if (isOwner) {
                 HouseholdController householdController = new HouseholdController();
@@ -51,11 +57,12 @@ public class CitizenController {
                     household.setHead(citizen);
                     householdController.updateHousehold(household);
                 } else {
-                    throw new Error("Added Cition. But this household has an head, please edit relationship to owner later!");
+                    Platform.runLater(() -> new Alert(Alert.AlertType.WARNING, "Đã thêm vào hộ khẩu, tuy nhiên hộ đã tồn tại chủ hộ, vui lòng SỬA LẠI MỐI QUAN HỆ TỚI CHỦ HỘ").showAndWait());
                 }
             }
         }
     }
+
 
     public boolean addCitizen(Citizen citizen, Integer householdId, String relation, boolean isHead, ResidencyStatus status) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
