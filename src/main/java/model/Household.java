@@ -12,7 +12,7 @@ public class Household {
     @SequenceGenerator(name = "household_id_seq", sequenceName = "household_id_seq", allocationSize = 1)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "headid")
     private Citizen head;
 

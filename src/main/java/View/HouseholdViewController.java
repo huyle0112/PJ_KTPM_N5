@@ -1,5 +1,6 @@
-package View;
+package view;
 
+import controller.HouseholdController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Household;
 import model.Citizen;
-import service.HouseholdService;
 import java.io.IOException;
 import java.util.List;
 
@@ -33,12 +33,12 @@ public class HouseholdViewController {
     @FXML
     private TextField searchField;
 
-    private HouseholdService householdService;
+    private HouseholdController householdController;
     private ObservableList<Household> householdList;
 
     @FXML
     public void initialize() {
-        householdService = new HouseholdService();
+        householdController = new HouseholdController();
         setupTable();
         loadHouseholds();
         setupButtons();
@@ -50,13 +50,13 @@ public class HouseholdViewController {
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         headNameColumn.setCellValueFactory(cellData -> {
             Citizen head = cellData.getValue().getHead();
-            String headName = head != null ? head.getFullName() : "";
+            String headName = head != null ? head.getFullname() : "";
             return javafx.beans.binding.Bindings.createStringBinding(() -> headName);
         });
     }
 
     private void loadHouseholds() {
-        List<Household> households = householdService.getAllHouseholds();
+        List<Household> households = householdController.getAllHouseholds();
         householdList = FXCollections.observableArrayList(households);
         householdTable.setItems(householdList);
     }
@@ -79,6 +79,15 @@ public class HouseholdViewController {
                 showAlert("Please select a household to delete");
             }
         });
+        householdTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
+                Household selected = householdTable.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    System.out.println("Bạn chọn: " + selected.getId());
+                    // mở popup, hoặc hiển thị chi tiết,...
+                }
+            }
+        });
     }
 
     private void setupSearch() {
@@ -89,7 +98,7 @@ public class HouseholdViewController {
                 ObservableList<Household> filteredList = householdList.filtered(household ->
                     household.getAddress().toLowerCase().contains(newValue.toLowerCase()) ||
                     (household.getHead() != null && 
-                     household.getHead().getFullName().toLowerCase().contains(newValue.toLowerCase()))
+                     household.getHead().getFullname().toLowerCase().contains(newValue.toLowerCase()))
                 );
                 householdTable.setItems(filteredList);
             }
@@ -100,7 +109,6 @@ public class HouseholdViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HouseholdDetailsView.fxml"));
             Parent root = loader.load();
-            
             HouseholdDetailsViewController controller = loader.getController();
             controller.setHousehold(household);
             controller.setOnSaveCallback(this::loadHouseholds);
@@ -123,7 +131,7 @@ public class HouseholdViewController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                householdService.deleteHousehold(household.getId());
+                householdController.deleteHousehold(household.getId());
                 loadHouseholds();
             }
         });

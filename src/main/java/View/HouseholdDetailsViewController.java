@@ -1,12 +1,12 @@
-package View;
+package view;
 
+import controller.CitizenController;
+import controller.HouseholdController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Household;
 import model.Citizen;
-import service.HouseholdService;
-import service.CitizenService;
 import java.util.List;
 import javafx.collections.FXCollections;
 
@@ -21,14 +21,14 @@ public class HouseholdDetailsViewController {
     private Button cancelButton;
 
     private Household household;
-    private HouseholdService householdService;
-    private CitizenService citizenService;
+    private HouseholdController householdController;
+    private CitizenController citizenController;
     private Runnable onSaveCallback;
 
     @FXML
     public void initialize() {
-        householdService = new HouseholdService();
-        citizenService = new CitizenService();
+        householdController = new HouseholdController();
+        citizenController = new CitizenController();
         setupButtons();
         loadCitizens();
     }
@@ -36,10 +36,11 @@ public class HouseholdDetailsViewController {
     private void setupButtons() {
         saveButton.setOnAction(event -> saveHousehold());
         cancelButton.setOnAction(event -> closeDialog());
+
     }
 
     private void loadCitizens() {
-        List<Citizen> citizens = citizenService.getAllCitizens();
+        List<Citizen> citizens = citizenController.getAllCitizens();
         headComboBox.setItems(FXCollections.observableArrayList(citizens));
         headComboBox.setCellFactory(param -> new ListCell<Citizen>() {
             @Override
@@ -48,7 +49,7 @@ public class HouseholdDetailsViewController {
                 if (empty || citizen == null) {
                     setText(null);
                 } else {
-                    setText(citizen.getFullName());
+                    setText(citizen.getFullname());
                 }
             }
         });
@@ -80,7 +81,7 @@ public class HouseholdDetailsViewController {
         household.setHead(headComboBox.getValue());
 
         try {
-            householdService.saveHousehold(household);
+            householdController.addHousehold(household);
             if (onSaveCallback != null) {
                 onSaveCallback.run();
             }
