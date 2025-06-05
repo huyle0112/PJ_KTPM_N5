@@ -13,11 +13,7 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="brandingImageView" fitHeight="401.0" fitWidth="295.0" layoutY="-1.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../Image/Background.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="brandingImageView" fitHeight="401.0" fitWidth="295.0" layoutY="-1.0" pickOnBounds="true" />
          </children>
       </AnchorPane>
    </left>
@@ -29,11 +25,7 @@
             <TextField fx:id="usernameTextField" layoutX="89.0" layoutY="157.0" prefHeight="25.0" prefWidth="192.0" promptText="Username" />
             <Button fx:id="loginButton" layoutX="19.0" layoutY="291.0" mnemonicParsing="false" onAction="#LoginButtonAction" prefHeight="25.0" prefWidth="268.0" style="-fx-background-color: #d39947;" text="Login" />
             <Button fx:id="cancelButton" layoutX="19.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="25.0" prefWidth="268.0" style="-fx-background-color: #d39947;" text="Cancel" />
-            <ImageView fx:id="lockImageView" fitHeight="118.0" fitWidth="187.0" layoutX="94.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Image/Lock.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="lockImageView" fitHeight="118.0" fitWidth="187.0" layoutX="94.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="255.0" prefHeight="17.0" prefWidth="266.0" text="" textAlignment="CENTER" textFill="RED" />
             <PasswordField fx:id="passwordTextField" layoutX="89.0" layoutY="209.0" prefHeight="25.0" prefWidth="192.0" promptText="Password" />
          </children>
