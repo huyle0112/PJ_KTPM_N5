@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="view.HouseholdDetailsViewController">
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.HouseholdDetailsViewController">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-
-    <GridPane hgap="10" vgap="10">
-        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS"/>
-
-        <Label text="Household Head:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <ComboBox fx:id="headComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS" maxWidth="Infinity"/>
-    </GridPane>
-
-    <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button fx:id="saveButton" text="Save" defaultButton="true" styleClass="button-primary"/>
-        <Button fx:id="cancelButton" text="Cancel" cancelButton="true"/>
-    </HBox>
-</VBox> 
+   <children>
+   
+       <GridPane hgap="10" vgap="10">
+      <children>
+              <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+              <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+      
+              <Label text="Household Head:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+              <ComboBox fx:id="headComboBox" maxWidth="Infinity" promptText="Chọn chủ hộ" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+      </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+       </GridPane>
+   
+       <HBox alignment="CENTER_RIGHT" spacing="10">
+      <children>
+              <Button fx:id="saveButton" defaultButton="true" styleClass="button-primary" text="Save" />
+              <Button fx:id="cancelButton" cancelButton="true" text="Cancel" />
+      </children>
+       </HBox>
+   </children>
+</VBox>
