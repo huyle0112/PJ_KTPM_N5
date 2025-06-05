@@ -4,8 +4,12 @@ import jakarta.persistence.NoResultException;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import model.Citizen;
+import model.Household;
+import model.Residence;
+import model.ResidenceId;
 import org.hibernate.Transaction;
 import service.CitizenDAO;
+import service.GenericDAO;
 import service.HibernateUtil;
 import org.hibernate.Session;
 import model.Citizen.ResidencyStatus;
@@ -25,6 +29,31 @@ public class CitizenController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);
              dao.save(citizen);
+        }
+    }
+
+    public void saveCitizensWithResidency(Citizen citizen, boolean isOwner, int householdId, String relationshipToOwner) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+            dao.save(citizen);
+
+            ResidenceId residenceId = new ResidenceId(citizen.getId(), householdId);
+            GenericDAO<Residence> residenceDAO = new GenericDAO<Residence>(Residence.class, session);
+            Residence residence = new Residence();
+            residence.setId(residenceId);
+            residence.setRelationshiptoowner(relationshipToOwner);
+            residenceDAO.save(residence);
+
+            if (isOwner) {
+                HouseholdController householdController = new HouseholdController();
+                Household household = householdController.getHouseholdById(householdId);
+                if (household.getHead() != null) {
+                    household.setHead(citizen);
+                    householdController.updateHousehold(household);
+                } else {
+                    throw new Error("Added Cition. But this household has an head, please edit relationship to owner later!");
+                }
+            }
         }
     }
 

@@ -32,6 +32,11 @@ public class ResidenceId implements Serializable {
         this.householdid = householdid;
     }
 
+    public ResidenceId(Integer citizenid, Integer householdid) {
+        this.citizenid = citizenid;
+        this.householdid = householdid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
