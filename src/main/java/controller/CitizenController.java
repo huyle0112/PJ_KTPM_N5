@@ -132,4 +132,10 @@ public class CitizenController {
         }
     }
 
+    public List<Citizen> getMembersByHouseholdId(int householdId) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+            return dao.findCitizensOfHousehold(householdId);
+        }
+    }
 }

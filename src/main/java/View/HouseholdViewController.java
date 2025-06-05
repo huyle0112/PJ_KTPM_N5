@@ -85,8 +85,19 @@ public class HouseholdViewController {
             if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
                 Household selected = householdTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
-                    // TODO: Connect đến giao diện citizenBYHousehold.fxml
-                    // Tức là nháy đúp vào một hàng thì xem thông tin chi tiết hộ khẩu đó
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CitizenByHousehold.fxml"));
+                        Parent root = loader.load();
+                        view.CitizenManagement.CitizenViewController controller = loader.getController();
+                        controller.showCitizensOfHousehold(selected.getId());
+                        Stage stage = new Stage();
+                        stage.setTitle("Citizens of Household");
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        showAlert("Error opening citizens by household view");
+                    }
                 }
             }
         });

@@ -1,6 +1,7 @@
 package service;
 
 import model.Citizen;
+import model.Household;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -18,9 +19,10 @@ public class CitizenDAO extends GenericDAO<Citizen> {
     }
 
     public List<Citizen> findCitizensOfHousehold(int householdId) {
+        Household household = session.get(Household.class, householdId);
         String hql = "SELECT c FROM Residence r JOIN r.citizenid c WHERE r.householdid = :hid";
         return session.createQuery(hql, Citizen.class)
-                .setParameter("householdId", householdId)
+                .setParameter("hid", household)
                 .getResultList();
     }
 }

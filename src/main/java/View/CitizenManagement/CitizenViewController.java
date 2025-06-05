@@ -170,4 +170,9 @@ public class CitizenViewController {
         }
     }
 
+    public void showCitizensOfHousehold(int householdId) {
+        citizenList.setAll(controller.getMembersByHouseholdId(householdId));
+        citizenTable.setItems(citizenList);
+    }
+
 }
