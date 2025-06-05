@@ -152,7 +152,6 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void handleAddCharge(ActionEvent evt) {
-        exitScene();
         sceneManager.showViewWithOutController("/AddChargeView.fxml", "Thêm khoản thu");
     }
 
@@ -191,7 +190,6 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void handleCharge(ActionEvent event){
-        exitScene();
         sceneManager.showViewWithOutController("/ChargeView.fxml","Thu phí");
     }
 
