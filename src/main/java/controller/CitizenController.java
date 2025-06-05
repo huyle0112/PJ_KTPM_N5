@@ -23,6 +23,12 @@ public class CitizenController {
         }
     }*/
 
+    public void updateCitizen(Citizen citizen, Integer householdId, String relation, boolean isHead, Citizen.ResidencyStatus status) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+            dao.updateCitizen(citizen, householdId, relation, isHead, status);
+        }
+    }
 
     public boolean addCitizen(Citizen citizen, Integer householdId, String relation, boolean isHead, Citizen.ResidencyStatus status){
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -52,12 +58,12 @@ public class CitizenController {
         }
     }*/
 
-/*    public Citizen getCitizenById(int id) {
+    public Citizen getCitizenById(int id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);
             return dao.findById(id);
         }
-    }*/
+    }
 
     public List<Citizen> getMembersByHouseholdId(int householdId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
