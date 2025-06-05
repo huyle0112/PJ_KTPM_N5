@@ -59,6 +59,7 @@ public class HouseholdViewController {
 
     private void loadHouseholds() {
         List<Household> households = householdController.getAllHouseholds();
+        households.sort((h1, h2) -> Integer.compare(h1.getId(), h2.getId()));
         householdList = FXCollections.observableArrayList(households);
         householdTable.setItems(householdList);
     }
