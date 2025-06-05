@@ -21,6 +21,13 @@ public class CitizenController {
         }
     }
 
+    public void saveCitizen(Citizen citizen) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+             dao.save(citizen);
+        }
+    }
+
     public boolean addCitizen(Citizen citizen, Integer householdId, String relation, boolean isHead, ResidencyStatus status) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
@@ -66,7 +73,6 @@ public class CitizenController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);
             dao.update(updatedCitizen);
-
         }
     }
 

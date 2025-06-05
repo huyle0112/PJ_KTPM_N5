@@ -66,7 +66,7 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        residentChargeController = new ResidentChargeController(session);
+        residentChargeController = new ResidentChargeController();
         sceneManager = new SceneManager();
         populateFields();
         if (residentCharge.getTypeOfCharge().equals("voluntary")) {
@@ -129,7 +129,6 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
         }
     }
     private void exitScene() {
-        session.close();
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
         sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");

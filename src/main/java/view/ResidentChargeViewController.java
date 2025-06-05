@@ -72,12 +72,11 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
 
     private String selectedType = "all";
     private String selectedCompletion = "all";
-    private Session session = HibernateUtil.getSessionFactory().openSession();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        residentChargeController = new ResidentChargeController(session);
+        residentChargeController = new ResidentChargeController();
         sceneManager = new SceneManager();
         viewListCharge();
         addPresidentChargeButton.setOnAction(this::handleAddCharge);
@@ -152,7 +151,9 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void handleAddCharge(ActionEvent evt) {
-        sceneManager.showViewWithOutController("/AddChargeView.fxml", "Thêm khoản thu");
+        AddChargeViewController controller = new AddChargeViewController();
+        controller.setParentController(this);
+        sceneManager.showViewWithController("/AddChargeView.fxml", controller,"Thêm khoản thu");
     }
 
     private void handleLogout(ActionEvent evt) {
@@ -194,8 +195,14 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void exitScene(){
-        session.close();
         Stage stage = (Stage) accountantLogOutButton.getScene().getWindow();
         stage.close();
     }
+
+    public void loadData() {
+        System.out.println("REFRESH DATA");
+        listOfPresidentChargeBox.getChildren().clear(); // Xoá toàn bộ giao diện cũ
+        viewListCharge();
+    }
+
 }

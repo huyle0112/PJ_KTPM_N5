@@ -2,40 +2,57 @@ package controller;
 
 import model.ResidentCharge;
 import org.hibernate.Session;
+import service.CitizenDAO;
+import service.HibernateUtil;
 import service.ResidentChargeDAO;
 
 import java.util.List;
 
 public class ResidentChargeController {
-    private final Session session;
-    private final ResidentChargeDAO residentChargeDAO;
-    public ResidentChargeController(Session session) {
-        this.session = session;
-        this.residentChargeDAO = new ResidentChargeDAO(session);
+
+    public ResidentChargeController() {
     }
 
     public List<ResidentCharge> requestList(){
-        return residentChargeDAO.getList();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            return residentChargeDAO.getList();
+        }
+
     }
 
     public List<ResidentCharge> filter(String selectedType, String selectedCompletion){
-        return residentChargeDAO.getList(selectedType, selectedCompletion);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            return residentChargeDAO.getList(selectedType, selectedCompletion);
+        }
     }
 
     public void create(ResidentCharge residentCharge){
-        residentChargeDAO.save(residentCharge);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO dao = new ResidentChargeDAO(session);
+            dao.save(residentCharge);
+        }
     }
 
     public void update(ResidentCharge residentCharge){
-        residentChargeDAO.update(residentCharge);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            residentChargeDAO.update(residentCharge);
+        }
     }
 
     public void delete(ResidentCharge residentCharge){
-        residentChargeDAO.delete(residentCharge);
-
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            residentChargeDAO.delete(residentCharge);
+        }
     }
 
     public List<ResidentCharge> search(String findKey, String selectedType, String selectedCompletion){
-        return residentChargeDAO.search(findKey, selectedType, selectedCompletion);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            return residentChargeDAO.search(findKey, selectedType, selectedCompletion);
+        }
     }
 }

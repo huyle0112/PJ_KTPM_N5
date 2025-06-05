@@ -48,11 +48,16 @@ public class AddChargeViewController implements Initializable, BlueMoonViewContr
 
     private Session session;
 
+    private ResidentChargeViewController residentChargeViewController;
+
+    public void setParentController(ResidentChargeViewController parentController) {
+        this.residentChargeViewController = parentController;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.session = HibernateUtil.getSessionFactory().openSession();
-        residentChargeController = new ResidentChargeController(session);
+        residentChargeController = new ResidentChargeController();
         sceneManager = new SceneManager();
         typeChargeChoiceBox.getItems().addAll("Bắt buộc", "Tự nguyện");
         typeChargeChoiceBox.setValue("Bắt buộc");
@@ -98,14 +103,15 @@ public class AddChargeViewController implements Initializable, BlueMoonViewContr
         residentChargeController.create(residentCharge);
         exitScene();
     }
+
     private void handleCancel(ActionEvent evt){
        exitScene();
     }
 
     private void exitScene(){
-        session.close();
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-        sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");
+        residentChargeViewController.loadData();
+//        sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");
     }
 }

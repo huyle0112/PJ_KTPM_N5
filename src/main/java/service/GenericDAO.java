@@ -8,23 +8,29 @@ import java.util.List;
 public class GenericDAO<T> {
 
     private final Class<T> type;
-    protected SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     protected final Session session;
+
     public GenericDAO(Class<T> type, Session session) {
         this.type = type;
         this.session = session;
     }
 
     public void save(T entity) {
+        Transaction tr = session.beginTransaction();
         session.save(entity);
+        tr.commit();
     }
 
     public void update(T entity) {
+        Transaction tr = session.beginTransaction();
         session.update(entity);
+        tr.commit();
     }
 
     public void delete(T entity) {
+        Transaction tr = session.beginTransaction();
         session.delete(entity);
+        tr.commit();
     }
 
     public T findById(int id) {

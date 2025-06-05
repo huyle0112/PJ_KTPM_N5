@@ -95,11 +95,8 @@ public class HouseholdViewController {
             if (newValue == null || newValue.isEmpty()) {
                 householdTable.setItems(householdList);
             } else {
-                ObservableList<Household> filteredList = householdList.filtered(household ->
-                    household.getAddress().toLowerCase().contains(newValue.toLowerCase()) ||
-                    (household.getHead() != null && 
-                     household.getHead().getFullname().toLowerCase().contains(newValue.toLowerCase()))
-                );
+                List<Household> households = householdController.findHouseholdsByOwnerName(newValue);
+                ObservableList<Household> filteredList = FXCollections.observableArrayList(households);
                 householdTable.setItems(filteredList);
             }
         });

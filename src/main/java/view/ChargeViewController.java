@@ -52,7 +52,7 @@ public class ChargeViewController {
     @FXML
     public void initialize() {
         sceneManager = new SceneManager();
-        residentChargeController = new ResidentChargeController(session);
+        residentChargeController = new ResidentChargeController();
         chargeController = new ChargeController(session);
         List<ResidentCharge> list = residentChargeController.requestList();
 
@@ -107,7 +107,6 @@ public class ChargeViewController {
     }
 
     private void exitScene() {
-        session.close();
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
         sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");
