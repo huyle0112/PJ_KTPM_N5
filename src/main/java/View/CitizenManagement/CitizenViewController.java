@@ -20,6 +20,7 @@ import model.Room;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class CitizenViewController {
 
@@ -53,7 +54,9 @@ public class CitizenViewController {
             return new SimpleStringProperty(r == null ? "" : String.valueOf(r.getRoomnumber()));
         });
 
-        citizenList.setAll(controller.getAllCitizens());
+        List<Citizen> allCitizenList = controller.getAllCitizens();
+        allCitizenList.sort((h1, h2) -> Integer.compare(h1.getId(), h2.getId()));
+        citizenList.setAll(allCitizenList);
         citizenTable.setItems(citizenList);
         citizenTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn

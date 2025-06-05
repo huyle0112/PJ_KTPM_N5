@@ -75,13 +75,16 @@ public class HouseholdDetailsViewController {
 
         if (household == null) {
             household = new Household();
+            household.setAddress(addressField.getText());
+            household.setHead(headComboBox.getValue());
+            householdController.addHousehold(household);
+        } else {
+            household.setAddress(addressField.getText());
+            household.setHead(headComboBox.getValue());
+            householdController.updateHousehold(household);
         }
 
-        household.setAddress(addressField.getText());
-        household.setHead(headComboBox.getValue());
-
         try {
-            householdController.addHousehold(household);
             if (onSaveCallback != null) {
                 onSaveCallback.run();
             }

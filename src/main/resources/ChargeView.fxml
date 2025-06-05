@@ -24,8 +24,8 @@
         </rowConstraints>
          <children>
             <Label prefHeight="26.0" prefWidth="51.0" text="Phòng" />
-            <Label text="Người nộp" GridPane.rowIndex="1" />
-            <Label text="Khoản thu" GridPane.rowIndex="2" />
+            <Label text="Người nộp" GridPane.rowIndex="2" />
+            <Label text="Khoản thu" GridPane.rowIndex="1" />
             <Label fx:id="moneyLabel" text="Số tiền" GridPane.rowIndex="3" />
             <ComboBox fx:id="roomComboBox" prefHeight="31.0" prefWidth="267.0" GridPane.columnIndex="1" />
             <ComboBox fx:id="residentChargesComboBox" prefHeight="31.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
