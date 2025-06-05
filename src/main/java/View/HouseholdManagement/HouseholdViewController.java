@@ -1,4 +1,4 @@
-package view;
+package view.HouseholdManagement;
 
 import controller.HouseholdController;
 import javafx.collections.FXCollections;
@@ -89,7 +89,7 @@ public class HouseholdViewController {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/HouseholdCitizenView.fxml"));
                         Parent root = loader.load();
-                        view.HouseholdCitizenViewController controller = loader.getController();
+                        HouseholdCitizenViewController controller = loader.getController();
                         controller.showCitizensOfHousehold(selected.getId());
                         Stage stage = new Stage();
                         stage.setTitle("Citizens of Household");
@@ -118,7 +118,7 @@ public class HouseholdViewController {
 
     private void openHouseholdDialog(Household household) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HouseholdDetailsView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/HouseholdDetailsView.fxml"));
             Parent root = loader.load();
             HouseholdDetailsViewController controller = loader.getController();
             controller.setHousehold(household);

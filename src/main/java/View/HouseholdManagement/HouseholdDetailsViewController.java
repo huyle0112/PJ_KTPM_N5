@@ -1,4 +1,4 @@
-package view;
+package view.HouseholdManagement;
 
 import controller.CitizenController;
 import controller.HouseholdController;

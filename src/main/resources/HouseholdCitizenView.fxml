@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import java.lang.*?>
@@ -15,70 +14,70 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-
-<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HouseholdCitizenViewController">
-    <bottom>
-        <Label fx:id="lblStatus" text="Sẵn sàng" textFill="#d07e0c">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-        </Label>
-    </bottom>
-   <top>
-      <VBox prefHeight="85.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-              <HBox spacing="10" style="-fx-background-color: f3f3f3;">
-                  <padding>
-                      <Insets bottom="10" left="10" right="10" top="10" />
-                  </padding>
-                 <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Back" />
-                     <TextField fx:id="txtSearch" prefHeight="25.0" prefWidth="190.0" promptText="Tìm tên nhân khẩu" />
-                     <Button onAction="#onSearch" prefHeight="25.0" prefWidth="45.0" text="Tìm" />
-                  <Region prefHeight="25.0" prefWidth="324.0" />
-                     <Button onAction="#onAdd" text="Thêm" />
-                     <Button onAction="#onEdit" text="Sửa" />
-                     <Button onAction="#onDelete" text="Xoá" />
-                 </children>
-              </HBox>
-            <Region prefHeight="39.0" prefWidth="800.0" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="tableTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="DANH SÁCH NHÂN KHẨU CỦA HỘ" wrappingWidth="247.13671875">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="20.0" top="30.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </top>
-   <left>
-      <Region prefHeight="447.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
-   </left>
-   <center>
-        <TableView fx:id="citizenTable" prefHeight="400.0" BorderPane.alignment="CENTER">
-            <columns>
-                <TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
-                <TableColumn fx:id="fullnameColumn" prefWidth="73.0" text="Họ tên" />
-                <TableColumn fx:id="relationshipToOwnerColumn" minWidth="0.0" prefWidth="161.0" text="MQH" />
-                <TableColumn fx:id="dobColumn" minWidth="0.0" prefWidth="1.0" text="Ngày sinh" />
-                <TableColumn fx:id="nationalIdColumn" prefWidth="88.0" text="CCCD" />
-
-            </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-        </TableView>
-   </center>
-   <right>
-      <Region prefHeight="447.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
-   </right>
+<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HouseholdManagement.HouseholdCitizenViewController">
+	<bottom>
+		<Label fx:id="lblStatus" text="Sẵn sàng" textFill="#d07e0c">
+			<padding>
+				<Insets bottom="10" left="10" right="10" top="10" />
+			</padding>
+		</Label>
+	</bottom>
+	<top>
+		<VBox prefHeight="85.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox spacing="10" style="-fx-background-color: f3f3f3;">
+					<padding>
+						<Insets bottom="10" left="10" right="10" top="10" />
+					</padding>
+					<children>
+						<Button mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Back" />
+						<TextField fx:id="txtSearch" prefHeight="25.0" prefWidth="190.0" promptText="Tìm tên nhân khẩu" />
+						<Button onAction="#onSearch" prefHeight="25.0" prefWidth="45.0" text="Tìm" />
+						<Region prefHeight="25.0" prefWidth="324.0" />
+						<Button onAction="#onAdd" text="Thêm" />
+						<Button onAction="#onEdit" text="Sửa" />
+						<Button onAction="#onDelete" text="Xoá" />
+					</children>
+				</HBox>
+				<Region prefHeight="39.0" prefWidth="800.0" />
+				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+					<children>
+						<Text fx:id="tableTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="DANH SÁCH NHÂN KHẨU CỦA HỘ" wrappingWidth="247.13671875">
+							<font>
+								<Font size="15.0" />
+							</font>
+						</Text>
+					</children>
+					<VBox.margin>
+						<Insets />
+					</VBox.margin>
+					<padding>
+						<Insets bottom="20.0" top="30.0" />
+					</padding>
+				</HBox>
+			</children>
+		</VBox>
+	</top>
+	<left>
+		<Region prefHeight="447.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+	</left>
+	<center>
+		<TableView fx:id="citizenTable" prefHeight="400.0" BorderPane.alignment="CENTER">
+			<columns>
+				<TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
+				<TableColumn fx:id="fullnameColumn" prefWidth="73.0" text="Họ tên" />
+				<TableColumn fx:id="relationshipToOwnerColumn" minWidth="0.0" prefWidth="161.0" text="MQH" />
+				<TableColumn fx:id="dobColumn" minWidth="0.0" prefWidth="1.0" text="Ngày sinh" />
+				<TableColumn fx:id="nationalIdColumn" prefWidth="88.0" text="CCCD" />
+			</columns>
+			<columnResizePolicy>
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			</columnResizePolicy>
+		</TableView>
+	</center>
+	<right>
+		<Region prefHeight="447.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+	</right>
 </BorderPane>

@@ -38,7 +38,7 @@ public class HomeController {
     @FXML
     public void openHouseholdView(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HouseholdView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/HouseholdView.fxml"));
             Parent chargeView = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(chargeView);

@@ -8,10 +8,11 @@ module application {
     requires java.naming;
 
     opens application to javafx.fxml;
+    opens view to javafx.fxml;
     opens view.Login to javafx.fxml;
     opens view.Home to javafx.fxml;
-    opens view to javafx.fxml;
     opens view.CitizenManagement to javafx.fxml;
+    opens view.HouseholdManagement to javafx.fxml;
     opens model to org.hibernate.orm.core;
     opens controller to javafx.fxml;
     opens service to javafx.fxml;
