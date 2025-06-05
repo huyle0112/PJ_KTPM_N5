@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="View.HouseholdViewController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Search:"/>
+        <TextField fx:id="searchField" HBox.hgrow="ALWAYS" promptText="Search by address or head name"/>
+    </HBox>
+
+    <TableView fx:id="householdTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="100"/>
+            <TableColumn fx:id="addressColumn" text="Address" prefWidth="250"/>
+            <TableColumn fx:id="headNameColumn" text="Household Head" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="addButton" text="Add Household" styleClass="button-primary"/>
+        <Button fx:id="editButton" text="Edit"/>
+        <Button fx:id="deleteButton" text="Delete" styleClass="button-danger"/>
+    </HBox>
+</VBox> 
