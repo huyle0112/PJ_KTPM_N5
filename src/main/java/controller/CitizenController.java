@@ -4,6 +4,7 @@ import model.Citizen;
 import service.CitizenDAO;
 import service.HibernateUtil;
 import org.hibernate.Session;
+import view.CitizenManagement.StatisticsResult;
 
 import java.util.List;
 
@@ -15,13 +16,6 @@ public class CitizenController {
             return dao.findAll();
         }
     }
-
-/*    public void saveCitizen(Citizen citizen) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            CitizenDAO dao = new CitizenDAO(session);
-            dao.save(citizen);
-        }
-    }*/
 
     public void updateCitizen(Citizen citizen, Integer householdId, String relation, boolean isHead, Citizen.ResidencyStatus status) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -69,6 +63,13 @@ public class CitizenController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);
             return dao.findCitizensOfHousehold(householdId);
+        }
+    }
+
+    public StatisticsResult getCitizenStatistics() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+            return dao.getCitizenStatistics();
         }
     }
 }

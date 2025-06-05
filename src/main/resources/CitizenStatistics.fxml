@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="view.CitizenManagement.CitizenStatisticsViewController">
+    <top>
+        <Label text="BẢNG THỐNG KÊ NHÂN KHẨU" style="-fx-font-size: 20; -fx-padding: 10; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
+    <center>
+        <VBox spacing="20" alignment="CENTER">
+            <TableView fx:id="statisticsTable" prefHeight="200" prefWidth="400">
+                <columns>
+                    <TableColumn fx:id="typeColumn" text="Loại Nhân Khẩu" prefWidth="200"/>
+                    <TableColumn fx:id="countColumn" text="Số lượng" prefWidth="200"/>
+                </columns>
+            </TableView>
+            <PieChart fx:id="pieChart" prefHeight="300" prefWidth="400"/>
+        </VBox>
+    </center>
+    <bottom>
+        <Button text="Đóng" fx:id="closeButton" onAction="#onClose" style="-fx-padding: 10 30;" BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>

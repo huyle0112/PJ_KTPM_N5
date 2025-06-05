@@ -59,7 +59,7 @@ public class CitizenViewController {
         citizenList.setAll(allCitizenList);
         citizenTable.setItems(citizenList);
         citizenTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
+            if (event.getClickCount() == 2) {
                 Citizen selected = citizenTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
                     Citizen updatedCitizen = showCitizenForm(selected);
@@ -135,6 +135,25 @@ public class CitizenViewController {
         });
     }
 
+    @FXML
+    private void onShowStatistics() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CitizenStatistics.fxml"));
+            Parent root = loader.load();
+            CitizenStatisticsViewController ctrl = loader.getController();
+
+            StatisticsResult stats = controller.getCitizenStatistics();
+            ctrl.setStatistics(stats);
+
+            Stage stage = new Stage();
+            stage.setTitle("Thống kê nhân khẩu");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private Citizen showCitizenForm(Citizen citizen) {
         try {
@@ -171,11 +190,6 @@ public class CitizenViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void showCitizensOfHousehold(int householdId) {
-        citizenList.setAll(controller.getMembersByHouseholdId(householdId));
-        citizenTable.setItems(citizenList);
     }
 
 }

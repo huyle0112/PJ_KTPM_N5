@@ -3,6 +3,7 @@ package service;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import view.CitizenManagement.StatisticsResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,23 @@ public class CitizenDAO extends GenericDAO<Citizen> {
         return session.createQuery(hql, Citizen.class)
                 .setParameter("name", "%" + name + "%")
                 .getResultList();
+    }
+
+    public StatisticsResult getCitizenStatistics(){
+        long total = session.createQuery("SELECT COUNT(c) FROM Citizen c", Long.class).getSingleResult();
+        long countPermanent = session.createQuery("SELECT COUNT(c) FROM Citizen c WHERE c.residencyStatus = :status", Long.class)
+                .setParameter("status", Citizen.ResidencyStatus.Permanent)
+                .getSingleResult();
+        long countAway = session.createQuery("SELECT COUNT(c) FROM Citizen c WHERE c.residencyStatus = :status", Long.class)
+                .setParameter("status", Citizen.ResidencyStatus.Away)
+                .getSingleResult();
+        long countTemporary = session.createQuery("SELECT COUNT(c) FROM Citizen c WHERE c.residencyStatus = :status", Long.class)
+                .setParameter("status", Citizen.ResidencyStatus.Temporary)
+                .getSingleResult();
+        long countUnknown = session.createQuery("SELECT COUNT(c) FROM Citizen c WHERE c.residencyStatus = :status", Long.class)
+                .setParameter("status", Citizen.ResidencyStatus.Unknown)
+                .getSingleResult();
+        return new StatisticsResult(total, countPermanent, countAway, countTemporary, countUnknown);
     }
 
     public List<Citizen> findCitizensOfHousehold(int householdId) {
