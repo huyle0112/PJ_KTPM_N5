@@ -62,6 +62,8 @@ public class HouseholdDetailsViewController {
             addressField.setText(household.getAddress());
             headComboBox.setValue(household.getHead());
         }
+        addressField.setPromptText("Nhập địa chỉ hộ khẩu");
+        headComboBox.setPromptText("Chọn chủ hộ");
     }
 
     public void setOnSaveCallback(Runnable callback) {
@@ -96,11 +98,11 @@ public class HouseholdDetailsViewController {
 
     private boolean validateInput() {
         if (addressField.getText() == null || addressField.getText().trim().isEmpty()) {
-            showAlert("Please enter an address");
+            showAlert("Vui lòng nhập địa chỉ hộ khẩu");
             return false;
         }
         if (headComboBox.getValue() == null) {
-            showAlert("Please select a household head");
+            showAlert("Vui lòng chọn chủ hộ");
             return false;
         }
         return true;
@@ -113,7 +115,7 @@ public class HouseholdDetailsViewController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+        alert.setTitle("Lỗi");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

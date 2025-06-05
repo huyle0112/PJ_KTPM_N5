@@ -66,6 +66,13 @@ public class CitizenController {
         }
     }
 
+    public List<Citizen> getCitizensNotInHousehold() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CitizenDAO dao = new CitizenDAO(session);
+            return dao.findCitizensNotInHousehold();
+        }
+    }
+
     public StatisticsResult getCitizenStatistics() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CitizenDAO dao = new CitizenDAO(session);

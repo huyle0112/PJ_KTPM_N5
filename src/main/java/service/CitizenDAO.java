@@ -54,6 +54,12 @@ public class CitizenDAO extends GenericDAO<Citizen> {
         return citizens;
     }
 
+    public List<Citizen> findCitizensNotInHousehold() {
+        String hql = "SELECT c FROM Citizen c WHERE c.id NOT IN (SELECT r.id.citizenid FROM Residence r)";
+        return session.createQuery(hql, Citizen.class)
+                .getResultList();
+    }
+
     @Override
     public void save(Citizen citizen) {
         session.save(citizen);

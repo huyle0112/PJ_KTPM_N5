@@ -71,7 +71,7 @@ public class HouseholdViewController {
             if (selected != null) {
                 openHouseholdDialog(selected);
             } else {
-                showAlert("Please select a household to edit");
+                showAlert("Vui lòng chọn một hộ khẩu để sửa");
             }
         });
         deleteButton.setOnAction(event -> {
@@ -79,11 +79,12 @@ public class HouseholdViewController {
             if (selected != null) {
                 deleteHousehold(selected);
             } else {
-                showAlert("Please select a household to delete");
+                showAlert("Vui lòng chọn một hộ khẩu để xoá");
             }
         });
+       
         householdTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
+            if (event.getClickCount() == 2) {
                 Household selected = householdTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
                     try {
@@ -97,7 +98,7 @@ public class HouseholdViewController {
                         stage.show();
                     } catch (IOException e) {
                         e.printStackTrace();
-                        showAlert("Error opening citizens by household view");
+                        showAlert("Lỗi khi mở danh sách nhân khẩu của hộ khẩu");
                     }
                 }
             }
@@ -136,9 +137,9 @@ public class HouseholdViewController {
 
     private void deleteHousehold(Household household) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Household");
-        alert.setHeaderText("Delete Household");
-        alert.setContentText("Are you sure you want to delete this household?");
+        alert.setTitle("Xoá hộ khẩu");
+        alert.setHeaderText("Xoá hộ khẩu");
+        alert.setContentText("Bạn có chắc chắn muốn xoá hộ khẩu này?");
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
@@ -164,7 +165,7 @@ public class HouseholdViewController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
+        alert.setTitle("Thông báo");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
