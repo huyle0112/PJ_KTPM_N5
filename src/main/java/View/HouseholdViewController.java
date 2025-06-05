@@ -83,8 +83,8 @@ public class HouseholdViewController {
             if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
                 Household selected = householdTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
-                    System.out.println("Bạn chọn: " + selected.getId());
-                    // mở popup, hoặc hiển thị chi tiết,...
+                    // TODO: Connect đến giao diện citizenBYHousehold.fxml
+                    // Tức là nháy đúp vào một hàng thì xem thông tin chi tiết hộ khẩu đó
                 }
             }
         });
