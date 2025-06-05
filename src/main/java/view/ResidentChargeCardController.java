@@ -45,8 +45,6 @@ public class ResidentChargeCardController {
         countLabel.setFont(Font.font("System", FontWeight.BOLD, 15));
         countLabel.setStyle("-fx-text-fill: #2980b9;");
 
-        titleBox.setStyle("-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; ");
-
         if ("mandatory".equals(charge.getTypeOfCharge())) {
             moneyLabel.setText("Số tiền/m2: " + charge.getMoney());
             moneyLabel.setVisible(true);

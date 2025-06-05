@@ -37,9 +37,31 @@
             </HBox>
          </children>
       </HBox>
-        <Label fx:id="createdDateLabel" />
-        <Label fx:id="moneyLabel" />
-        <Label fx:id="descriptionLabel" />
+      <VBox prefHeight="26.0" prefWidth="388.0">
+         <children>
+              <Label fx:id="createdDateLabel">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding></Label>
+              <Label fx:id="moneyLabel">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin></Label>
+              <Label fx:id="descriptionLabel">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </VBox>
       <HBox alignment="CENTER" prefHeight="29.0" prefWidth="388.0" spacing="70.0">
          <children>
             <Label fx:id="sumLabel" text="Tổng tiền" />
