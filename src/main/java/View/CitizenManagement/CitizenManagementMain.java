@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class CitizenManagementMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(CitizenManagementMain.class.getResource("/citizen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(CitizenManagementMain.class.getResource("/Citizen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
         primaryStage.show();

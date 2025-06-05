@@ -22,7 +22,7 @@
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
            <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #d39947;" text="Home" />
+            <Button mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #d39947;" text="Home" />
                <TextField fx:id="txtSearch" promptText="Tìm tên nhân khẩu" />
                <Button onAction="#onSearch" text="Tìm" />
                <Region HBox.hgrow="ALWAYS" />

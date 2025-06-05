@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.canvas.*?>
@@ -13,20 +14,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Home.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #dff6fe;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Home.HomeController">
     <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
               <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
                   <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chào mừng, Tổ trưởng!">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý chung cư BlueMoon" wrappingWidth="305.0">
                           <font>
                               <Font size="24.0" />
                           </font>
                       </Text>
+                      <Button fx:id="householdButton" mnemonicParsing="false" onAction="#openHouseholdView" prefHeight="40.0" prefWidth="200.0" text="Quản lý hộ khẩu" />
                       <Button fx:id="citizenButton" mnemonicParsing="false" onAction="#openCitizenView" prefHeight="40.0" prefWidth="200.0" text="Quản lý nhân khẩu" />
-                      <Button fx:id="chargeButton" mnemonicParsing="false" onAction="#openChargeView" prefHeight="40.0" prefWidth="200.0" text="Quản lý phí" />
-                      <Button fx:id="residentChargeButton" mnemonicParsing="false" onAction="#openResidentChargeView" prefHeight="40.0" prefWidth="200.0" text="Quản lý phí cư dân" />
+                      <Button fx:id="residentChargeButton" mnemonicParsing="false" onAction="#openResidentChargeView" prefHeight="40.0" prefWidth="200.0" text="Quản lý khoản thu" />
                       <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="200.0" text="Đăng xuất" />
                   </children>
               </VBox>

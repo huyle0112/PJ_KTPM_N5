@@ -5,16 +5,20 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Citizen;
+import model.Household;
 import model.Room;
-import view.CitizenManagement.CitizenFormViewController;
+
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class CitizenViewController {
@@ -51,6 +55,17 @@ public class CitizenViewController {
 
         citizenList.setAll(controller.getAllCitizens());
         citizenTable.setItems(citizenList);
+        citizenTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
+                Citizen selected = citizenTable.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    Citizen updatedCitizen = showCitizenForm(selected);
+                    if (updatedCitizen != null) {
+                        citizenTable.refresh();
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -120,7 +135,7 @@ public class CitizenViewController {
 
     private Citizen showCitizenForm(Citizen citizen) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/citizenForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CitizenForm.fxml"));
             Parent root = loader.load();
             CitizenFormViewController formController = loader.getController();
             formController.setCitizen(citizen);
@@ -138,6 +153,20 @@ public class CitizenViewController {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @FXML
+    private void returnHome(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+            Parent citizenView = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(citizenView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

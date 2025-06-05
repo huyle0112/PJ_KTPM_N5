@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class LoginMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginMain.class.getResource("/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();

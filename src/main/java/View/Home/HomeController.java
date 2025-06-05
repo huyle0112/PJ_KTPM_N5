@@ -15,7 +15,7 @@ public class HomeController {
     @FXML
     private Button citizenButton;
     @FXML
-    private Button chargeButton;
+    private Button householdButton;
     @FXML
     private Button residentChargeButton;
     @FXML
@@ -24,7 +24,7 @@ public class HomeController {
     @FXML
     public void openCitizenView(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/citizen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Citizen.fxml"));
             Parent citizenView = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(citizenView);
@@ -36,9 +36,9 @@ public class HomeController {
     }
 
     @FXML
-    public void openChargeView(ActionEvent event) {
+    public void openHouseholdView(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChargeView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HouseholdView.fxml"));
             Parent chargeView = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(chargeView);
@@ -66,7 +66,7 @@ public class HomeController {
     @FXML
     public void logout(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
             Parent loginView = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(loginView);

@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
             if(validateLogin()) {
                 try {
                     // Load trang chính
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/home.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
                     Parent homeView = loader.load();
                     
                     // Lấy stage hiện tại
