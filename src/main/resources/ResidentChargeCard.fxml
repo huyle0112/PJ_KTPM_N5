@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<VBox prefWidth="400" spacing="5" style="-fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #f9f9f9;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.ResidentChargeCardController">
+<VBox prefWidth="400" spacing="5" style="-fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ResidentChargeCardController">
     <children>
-        <Label fx:id="nameLabel" />
-        <Label fx:id="typeLabel" />
+      <HBox fx:id="titleBox" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="390.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 8; -fx-border-width: 1; -fx-background-color: #ecf0f1;">
+         <children>
+            <HBox fx:id="rightTitleBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                    <Label fx:id="nameLabel" text="Tiêu đề">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="leftTitleBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                    <Label fx:id="typeLabel" prefHeight="26.0" prefWidth="107.0" text="Loại khoản thu" textAlignment="RIGHT" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
         <Label fx:id="createdDateLabel" />
         <Label fx:id="moneyLabel" />
         <Label fx:id="descriptionLabel" />
-        <Label fx:id="sumLabel" />
-        <Label fx:id="countLabel" />
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="388.0" spacing="70.0">
+         <children>
+            <Label fx:id="sumLabel" text="Tổng tiền" />
+            <Label fx:id="countLabel" text="Số hộ" />
+         </children>
+      </HBox>
     </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
