@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
@@ -24,7 +25,10 @@
    
              <HBox alignment="CENTER_LEFT" spacing="10" BorderPane.alignment="CENTER">
       <children>
-            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" text="Home" />
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #d39947; -fx-background-radius: 10;" text="Home">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
               <Label text="Search:" />
               <TextField fx:id="searchField" prefHeight="25.0" prefWidth="617.0" promptText="Search by address or head name" HBox.hgrow="ALWAYS" />
       </children>

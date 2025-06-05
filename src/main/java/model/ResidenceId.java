@@ -16,20 +16,15 @@ public class ResidenceId implements Serializable {
     @Column(name = "householdid", nullable = false)
     private Integer householdid;
 
-    public Integer getCitizenid() {
-        return citizenid;
-    }
 
-    public void setCitizenid(Integer citizenid) {
+
+    public ResidenceId(Integer citizenid, Integer householdid) {
         this.citizenid = citizenid;
-    }
-
-    public Integer getHouseholdid() {
-        return householdid;
-    }
-
-    public void setHouseholdid(Integer householdid) {
         this.householdid = householdid;
+    }
+
+    public ResidenceId() {
+
     }
 
     @Override

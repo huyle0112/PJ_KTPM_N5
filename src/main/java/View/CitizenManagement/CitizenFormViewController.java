@@ -13,7 +13,7 @@ import model.Room;
 import java.time.LocalDate;
 public class CitizenFormViewController {
     @FXML private TextField nameField;
-    @FXML private TextField jobField;
+    @FXML private TextField dateOfBirthField;
     @FXML private TextField placeOfBirthField;
     @FXML private TextField occupationField;
     @FXML private TextField nationalIdField;
@@ -61,12 +61,12 @@ public class CitizenFormViewController {
         this.citizen = citizen;
         if (citizen != null) {
             nameField.setText(citizen.getFullname());
-            jobField.setText(citizen.getOccupation());
+            dateOfBirthField.setText(citizen.getDateofbirth().toString());
             placeOfBirthField.setText(citizen.getPlaceofbirth());
             occupationField.setText(citizen.getOccupation());
             nationalIdField.setText(citizen.getNationalid());
             statusCombo.setValue(citizen.getResidencyStatus());
-            roomIdField.setText(String.valueOf(citizen.getRoomid()));
+            roomIdField.setText(citizen.getRoomid() != null ? String.valueOf(citizen.getRoomid().getId()) : "");
         }
     }
 
@@ -79,7 +79,7 @@ public class CitizenFormViewController {
         try {
             if (citizen == null) citizen = new Citizen();
             citizen.setFullname(nameField.getText());
-            citizen.setDateofbirth(LocalDate.parse(jobField.getText()));
+            citizen.setDateofbirth(LocalDate.parse(dateOfBirthField.getText()));
             citizen.setPlaceofbirth(placeOfBirthField.getText());
             citizen.setOccupation(occupationField.getText());
             citizen.setNationalid(nationalIdField.getText());
@@ -106,7 +106,19 @@ public class CitizenFormViewController {
                 relation = isHead ? "Head" : relationToOwnerField.getText();
             }
 
-            boolean ok = citizenController.addCitizen(citizen, householdId, relation, isHead, status);
+            boolean isUpdate = false;
+            if (citizen.getId() != null) {
+                Citizen existing = citizenController.getCitizenById(citizen.getId());
+                if (existing != null) isUpdate = true;
+            }
+
+            boolean ok = false;
+            if (isUpdate) {
+                citizenController.updateCitizen(citizen, householdId, relation, isHead, status);
+                ok = true;
+            } else {
+                ok = citizenController.addCitizen(citizen, householdId, relation, isHead, status);
+            }
             if (!ok) return;
 
             saveClicked = true;

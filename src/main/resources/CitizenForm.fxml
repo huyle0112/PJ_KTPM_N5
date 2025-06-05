@@ -16,113 +16,135 @@
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-
-    <!-- Basic Fields -->
-    <Label text="Họ tên:" GridPane.columnIndex="0" GridPane.rowIndex="0">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <Label text="Ngày sinh (yyyy-mm-dd):" GridPane.columnIndex="0" GridPane.rowIndex="1">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.rowIndex="1">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <Label text="Nơi sinh:" GridPane.columnIndex="0" GridPane.rowIndex="2">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="placeOfBirthField" GridPane.columnIndex="1" GridPane.rowIndex="2">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <Label text="Nghề nghiệp:" GridPane.columnIndex="0" GridPane.rowIndex="3">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="occupationField" GridPane.columnIndex="1" GridPane.rowIndex="3">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <Label text="CCCD:" GridPane.columnIndex="0" GridPane.rowIndex="4">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="nationalIdField" GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <Label text="Tình trạng cư trú:" GridPane.columnIndex="0" GridPane.rowIndex="5">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <ComboBox fx:id="statusCombo" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
-    <Label text="Căn hộ (RoomID):" GridPane.columnIndex="0" GridPane.rowIndex="6">
-      <font>
-         <Font size="11.0" />
-      </font></Label>
-    <TextField fx:id="roomIdField" GridPane.columnIndex="1" GridPane.rowIndex="6">
-      <font>
-         <Font size="11.0" />
-      </font></TextField>
-
-    <GridPane fx:id="residenceDetailsBox" hgap="10" managed="false" vgap="10" visible="false" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7">
-
-        <Label text="Thông tin cư trú bổ sung:" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="11.0" />
-         </font></Label>
-
-        <Label text="ID Hộ khẩu:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+   <children>
+   
+       <!-- Basic Fields -->
+       <Label text="Họ tên:" GridPane.columnIndex="0" GridPane.rowIndex="0">
          <font>
             <Font size="11.0" />
-         </font></Label>
-        <TextField fx:id="householdIdField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-        <Label text="Là chủ hộ:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+         </font>
+      </Label>
+       <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0">
          <font>
             <Font size="11.0" />
-         </font></Label>
-        <CheckBox fx:id="isHeadCheckbox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-        <Label fx:id="relationLabel" text="Quan hệ với chủ hộ:" GridPane.columnIndex="0" GridPane.rowIndex="3">
-            <font>
-                <Font size="11.0" />
-            </font>
-        </Label>
-        <TextField fx:id="relationToOwnerField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-
-        <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
-    </GridPane>
-
-
-    <!-- Action Buttons -->
-    <HBox alignment="center" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="8">
-        <Button onAction="#onSave" text="Lưu" />
-        <Button onAction="#onCancel" text="Huỷ" />
-    </HBox>
+         </font>
+      </TextField>
+   
+       <Label text="Ngày sinh (yyyy-mm-dd):" GridPane.columnIndex="0" GridPane.rowIndex="1">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <TextField fx:id="dateOfBirthField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+   
+       <Label text="Nơi sinh:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <TextField fx:id="placeOfBirthField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+   
+       <Label text="Nghề nghiệp:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <TextField fx:id="occupationField" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+   
+       <Label text="CCCD:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <TextField fx:id="nationalIdField" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+   
+       <Label text="Tình trạng cư trú:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <ComboBox fx:id="statusCombo" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+   
+       <Label text="Căn hộ (RoomID):" GridPane.columnIndex="0" GridPane.rowIndex="6">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+       <TextField fx:id="roomIdField" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+   
+       <GridPane fx:id="residenceDetailsBox" hgap="10" managed="false" vgap="10" visible="false" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7">
+      <children>
+      
+              <Label text="Thông tin cư trú bổ sung:" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="11.0" />
+               </font>
+            </Label>
+      
+              <Label text="ID Hộ khẩu:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+              <TextField fx:id="householdIdField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      
+              <Label text="Là chủ hộ:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+              <CheckBox fx:id="isHeadCheckbox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      
+              <Label fx:id="relationLabel" text="Quan hệ với chủ hộ:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                  <font>
+                      <Font size="11.0" />
+                  </font>
+              </Label>
+              <TextField fx:id="relationToOwnerField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      </children>
+   
+   
+           <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+       </GridPane>
+   
+   
+       <!-- Action Buttons -->
+       <HBox alignment="center" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+      <children>
+              <Button defaultButton="true" onAction="#onSave" text="Lưu" />
+              <Button onAction="#onCancel" text="Huỷ" />
+      </children>
+       </HBox>
+   </children>
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />

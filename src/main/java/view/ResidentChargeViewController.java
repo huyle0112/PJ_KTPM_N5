@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -26,7 +29,7 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     private Button addPresidentChargeButton;
 
     @FXML
-    private Button accountantLogOutButton;
+    private Button homeButton;
 
     @FXML
     private VBox listOfPresidentChargeBox;
@@ -69,7 +72,7 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
         sceneManager = new SceneManager();
         viewListCharge();
         addPresidentChargeButton.setOnAction(this::handleAddCharge);
-        accountantLogOutButton.setOnAction(this::handleLogout);
+
         searchChargeButton.setOnAction(this::handleSearchCharge);
         chargeButton.setOnAction(this::handleCharge);
         allTypeItem.setOnAction(e -> {
@@ -136,8 +139,18 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
         sceneManager.showViewWithController("/AddChargeView.fxml", controller,"Thêm khoản thu");
     }
 
-    private void handleLogout(ActionEvent evt) {
-        exitScene();
+    @FXML
+    private void returnHome(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+            Parent citizenView = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(citizenView);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private VBox createChargeCard(ResidentCharge residentCharge) {
@@ -177,7 +190,7 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void exitScene(){
-        Stage stage = (Stage) accountantLogOutButton.getScene().getWindow();
+        Stage stage = (Stage) homeButton.getScene().getWindow();
         stage.close();
     }
 

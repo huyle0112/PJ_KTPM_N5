@@ -1,4 +1,4 @@
-package view.CitizenManagement;
+package view;
 
 import controller.CitizenController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,22 +17,20 @@ import javafx.stage.Stage;
 import model.Citizen;
 import model.Household;
 import model.Room;
+import view.CitizenManagement.CitizenFormViewController;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CitizenViewController {
+public class HouseholdCitizenViewController {
 
     @FXML private TableView<Citizen> citizenTable;
     @FXML private TableColumn<Citizen, Integer> idColumn;
     @FXML private TableColumn<Citizen, String> fullnameColumn;
+    @FXML private TableColumn<Citizen, String> relationshipToOwnerColumn;
     @FXML private TableColumn<Citizen, LocalDate> dobColumn;
-    @FXML private TableColumn<Citizen, String> placeOfBirthColumn;
-    @FXML private TableColumn<Citizen, String> occupationColumn;
     @FXML private TableColumn<Citizen, String> nationalIdColumn;
-    @FXML private TableColumn<Citizen, Citizen.ResidencyStatus> statusColumn;
-    @FXML private TableColumn<Citizen, String> roomColumn;
 
     @FXML private TextField txtSearch;
     @FXML private Label lblStatus;
@@ -44,22 +42,12 @@ public class CitizenViewController {
     private void initialize() {
         idColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         fullnameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFullname()));
+        relationshipToOwnerColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRelationshipToOwner()));
         dobColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDateofbirth()));
-        placeOfBirthColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlaceofbirth()));
-        occupationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOccupation()));
         nationalIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNationalid()));
-        statusColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getResidencyStatus()));
-        roomColumn.setCellValueFactory(cellData -> {
-            Room r = cellData.getValue().getRoomid();
-            return new SimpleStringProperty(r == null ? "" : String.valueOf(r.getRoomnumber()));
-        });
 
-        List<Citizen> allCitizenList = controller.getAllCitizens();
-        allCitizenList.sort((h1, h2) -> Integer.compare(h1.getId(), h2.getId()));
-        citizenList.setAll(allCitizenList);
-        citizenTable.setItems(citizenList);
         citizenTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
+            if (event.getClickCount() == 2) { // click đôi, đổi thành 1 nếu muốn click đơn
                 Citizen selected = citizenTable.getSelectionModel().getSelectedItem();
                 if (selected != null) {
                     Citizen updatedCitizen = showCitizenForm(selected);
@@ -135,25 +123,6 @@ public class CitizenViewController {
         });
     }
 
-    @FXML
-    private void onShowStatistics() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CitizenStatistics.fxml"));
-            Parent root = loader.load();
-            CitizenStatisticsViewController ctrl = loader.getController();
-
-            StatisticsResult stats = controller.getCitizenStatistics();
-            ctrl.setStatistics(stats);
-
-            Stage stage = new Stage();
-            stage.setTitle("Thống kê nhân khẩu");
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     private Citizen showCitizenForm(Citizen citizen) {
         try {
@@ -190,6 +159,11 @@ public class CitizenViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showCitizensOfHousehold(int householdId) {
+        citizenList.setAll(controller.getMembersByHouseholdId(householdId));
+        citizenTable.setItems(citizenList);
     }
 
 }

@@ -40,6 +40,10 @@ public class Citizen {
     @JoinColumn(name = "roomid")
     private Room roomid;
 
+    @Transient
+    private String relationshipToOwner = "owner";
+ 
+
     public Citizen() {
     }
 
@@ -105,5 +109,13 @@ public class Citizen {
 
     public void setResidencyStatus(ResidencyStatus residencyStatus) {
         this.residencyStatus = residencyStatus;
+    }
+
+    public String getRelationshipToOwner() {
+        return relationshipToOwner;
+    }
+
+    public void setRelationshipToOwner(String relationshipToOwner) {
+        this.relationshipToOwner = relationshipToOwner;
     }
 }

@@ -15,10 +15,13 @@
                <children>
                   <HBox prefHeight="27.0" prefWidth="800.0">
                      <children>
-                        <Button fx:id="accountantLogOutButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #d39947;" text="Home">
+                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #d39947; -fx-background-radius: 10;" text="Home">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Button>
                         <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="721.0">
                            <children>
@@ -27,7 +30,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="chargeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #0eda07;" text="Thu phí" textAlignment="CENTER">
+                              <Button fx:id="chargeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #02793a; -fx-background-color: #82c057; -fx-background-radius: 10; -fx-border-radius: 10;" text="THU PHÍ" textAlignment="CENTER">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
