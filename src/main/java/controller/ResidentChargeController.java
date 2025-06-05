@@ -7,6 +7,7 @@ import service.HibernateUtil;
 import service.ResidentChargeDAO;
 
 import java.util.List;
+import java.util.UUID;
 
 public class ResidentChargeController {
 
@@ -53,6 +54,13 @@ public class ResidentChargeController {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
             return residentChargeDAO.search(findKey, selectedType, selectedCompletion);
+        }
+    }
+
+    public ResidentCharge findById(UUID id){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            ResidentChargeDAO residentChargeDAO = new ResidentChargeDAO(session);
+            return residentChargeDAO.findById(id);
         }
     }
 }

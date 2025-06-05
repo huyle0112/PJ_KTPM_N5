@@ -51,18 +51,12 @@
                               <MenuButton fx:id="voluntaryFilterButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" text="Loại khoản thu">
                                 <items>
                                   <MenuItem fx:id="allTypeItem" mnemonicParsing="false" text="Tất cả" />
-                                  <MenuItem fx:id="voluntaryItem" mnemonicParsing="false" text="Tự nguyện" />
-                                    <MenuItem fx:id="mandatoryItem" mnemonicParsing="false" text="Bắt buộc" />
-                                </items>
-                              </MenuButton>
-                              <MenuButton fx:id="inCompleteFilterButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="133.0" text="Độ hoàn thành">
-                                <items>
-                                  <MenuItem fx:id="allItem" mnemonicParsing="false" text="Tất cả" />
-                                  <MenuItem fx:id="completeItem" mnemonicParsing="false" text="Hoàn thành" />
-                                    <MenuItem fx:id="inCompleteItem" mnemonicParsing="false" text="Chưa hoàn thành" />
+                                  <MenuItem fx:id="voluntaryItem" mnemonicParsing="false" text="Khoản thu tự nguyện" />
+                                    <MenuItem fx:id="mandatoryItem" mnemonicParsing="false" text="Khoản thu bắt buộc chưa hoàn thành" />
+                                  <MenuItem fx:id="allItem" mnemonicParsing="false" text="Khoản thu bắt buộc đã hoàn thành" />
                                 </items>
                                  <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
+                                    <Insets right="20.0" />
                                  </HBox.margin>
                               </MenuButton>
                            </children>
@@ -82,13 +76,18 @@
       </Pane>
    </top>
    <center>
-      <VBox fx:id="listOfPresidentChargeBox" prefHeight="519.0" prefWidth="800.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="10.0" top="10.0" />
-         </padding></VBox>
+      <ScrollPane maxHeight="465.0" maxWidth="700.0" minHeight="465.0" minWidth="700.0" prefHeight="465.0" prefViewportHeight="520.0" prefViewportWidth="729.0" prefWidth="700.0">
+         <content>
+            <VBox fx:id="listOfPresidentChargeBox" prefHeight="0.0" prefWidth="680.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
    </center>
    <left>
       <Region prefHeight="513.0" prefWidth="37.0" BorderPane.alignment="CENTER" />

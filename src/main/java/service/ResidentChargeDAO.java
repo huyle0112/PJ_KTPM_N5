@@ -5,6 +5,7 @@ import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ResidentChargeDAO extends GenericDAO<ResidentCharge>{
     public ResidentChargeDAO(Session session){
@@ -40,5 +41,12 @@ public class ResidentChargeDAO extends GenericDAO<ResidentCharge>{
             }
         }
         return list;
+    }
+
+    public ResidentCharge findById(UUID id) {
+        String hql = "SELECT DISTINCT c FROM ResidentCharge c LEFT JOIN FETCH c.paidHouseholdList WHERE c.id = :id";
+        return session.createQuery(hql, ResidentCharge.class)
+                .setParameter("id", id)
+                .uniqueResult();
     }
 }

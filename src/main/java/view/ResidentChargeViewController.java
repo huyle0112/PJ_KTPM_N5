@@ -14,8 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.ResidentCharge;
-import org.hibernate.Session;
-import service.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,9 +44,6 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     private MenuButton voluntaryFilterButton;
 
     @FXML
-    private MenuButton inCompleteFilterButton;
-
-    @FXML
     private MenuItem allTypeItem;
 
     @FXML
@@ -59,12 +54,6 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
 
     @FXML
     private MenuItem allItem;
-
-    @FXML
-    private MenuItem inCompleteItem;
-
-    @FXML
-    private MenuItem completeItem;
 
     private ResidentChargeController residentChargeController;
 
@@ -85,41 +74,32 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
         chargeButton.setOnAction(this::handleCharge);
         allTypeItem.setOnAction(e -> {
             selectedType = "all";
+            selectedCompletion = "all";
             voluntaryFilterButton.setText("Tất cả");
             applyFilters();
         });
 
         voluntaryItem.setOnAction(e -> {
-            selectedType = "voluntary";
-            voluntaryFilterButton.setText("Tự nguyện");
+            selectedType = "Voluntary";
+            selectedCompletion = "all";
+            voluntaryFilterButton.setText("Khoản thu tự nguyện");
             applyFilters();
         });
 
         mandatoryItem.setOnAction(e -> {
-            selectedType = "mandatory";
-            voluntaryFilterButton.setText("Bắt buộc");
+            selectedType = "Mandatory";
+            selectedCompletion = "false";
+            voluntaryFilterButton.setText("Khoản thu bắt buộc chưa hoàn thành");
             applyFilters();
         });
 
         // Xử lý bộ lọc trạng thái hoàn thành
         allItem.setOnAction(e -> {
-            selectedCompletion = "all";
-            inCompleteFilterButton.setText("Tất cả");
-            applyFilters();
-        });
-
-        inCompleteItem.setOnAction(e -> {
-            selectedCompletion = "false";
-            inCompleteFilterButton.setText("Chưa hoàn thành");
-            applyFilters();
-        });
-
-        completeItem.setOnAction(e -> {
+            selectedType = "Mandatory";
             selectedCompletion = "true";
-            inCompleteFilterButton.setText("Đã hoàn thành");
+            voluntaryFilterButton.setText("Khoản thu bắt buộc đã hoàn thành");
             applyFilters();
         });
-
     }
 
     private void applyFilters() {
@@ -143,7 +123,7 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
 
         List<ResidentCharge> listCharge = residentChargeController.filter(selectedType, selectedCompletion);
         String findKey = findKeyTextField.getText();
-        if(!    findKey.isEmpty())listCharge = residentChargeController.search(findKey,selectedType,selectedCompletion);
+        if(!findKey.isEmpty())listCharge = residentChargeController.search(findKey,selectedType,selectedCompletion);
         for (ResidentCharge charge : listCharge) {
             VBox card = createChargeCard(charge);
             listOfPresidentChargeBox.getChildren().add(card);
@@ -191,9 +171,9 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
     }
 
     private void handleCharge(ActionEvent event){
-        ChargeViewController controller = new ChargeViewController();
+        ResidentChargeSelectedViewController controller = new ResidentChargeSelectedViewController();
         controller.setParentController(this);
-        sceneManager.showViewWithController("/ChargeView.fxml", controller,"Thu phí");
+        sceneManager.showViewWithController("/ResidentChargeSelectedView.fxml",controller,"Thu phí");
     }
 
     private void exitScene(){
@@ -201,9 +181,9 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
         stage.close();
     }
 
-    public void loadData() {
-        System.out.println("REFRESH DATA");
-        listOfPresidentChargeBox.getChildren().clear(); // Xoá toàn bộ giao diện cũ
+    @Override
+    public void reload() {
+        listOfPresidentChargeBox.getChildren().clear();
         viewListCharge();
     }
 

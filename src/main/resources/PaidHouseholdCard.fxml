@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox fx:id="cardBox" alignment="CENTER_LEFT" prefWidth="450.0" spacing="10" style="-fx-background-color: white;              -fx-padding: 15;              -fx-border-color: #e0e0e0;              -fx-border-radius: 10;              -fx-background-radius: 10;              -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.3, 0, 2);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.PaidHouseholdCardController">
+   <children>
+   
+       <HBox alignment="CENTER_LEFT" spacing="20">
+      <children>
+              <VBox alignment="CENTER_LEFT" spacing="5">
+                 <children>
+                     <Label fx:id="roomLabel" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <Label fx:id="payerLabel" style="-fx-text-fill: #34495e; -fx-font-size: 13px;" />
+                 </children>
+              </VBox>
+      
+              <VBox alignment="CENTER_RIGHT" spacing="5">
+         <children>
+                     <Label fx:id="dateLabel" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+                     <Label fx:id="amountLabel" style="-fx-font-weight: bold; -fx-text-fill: #27ae60; -fx-font-size: 14px;" />
+         </children>
+              </VBox>
+      </children>
+       </HBox>
+   </children>
+</VBox>

@@ -3,14 +3,20 @@ package view;
 import application.SceneManager;
 import controller.ResidentChargeController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.ResidentCharge;
 import org.hibernate.Session;
+import org.w3c.dom.events.Event;
+import service.GenericDAO;
 import service.HibernateUtil;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -56,6 +62,12 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private Button chargeButton;
+
+    @FXML
+    private Label moneyValueLabel;
+
     private ResidentCharge residentCharge;
     private ResidentChargeController residentChargeController;
     private SceneManager sceneManager;
@@ -69,18 +81,20 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
         residentChargeController = new ResidentChargeController();
         sceneManager = new SceneManager();
         populateFields();
-        if (residentCharge.getTypeOfCharge().equals("voluntary")) {
-            moneyTextField.setVisible(false);
-            moneyTextField.setManaged(false);
+        if (residentCharge.getTypeOfCharge().equals("Voluntary")) {
+            moneyValueLabel.setVisible(false);
+            moneyValueLabel.setManaged(false);
             moneyLabel.setVisible(false);
             moneyLabel.setManaged(false);
         }
         updateChargeButton.setOnAction(e -> handleUpdate());
         deleteButton.setOnAction(e -> handleDelete());
         cancelButton.setOnAction(e -> exitScene());
+        chargeButton.setOnAction(e -> handleCharge());
     }
 
     private void populateFields() {
+        residentCharge = residentChargeController.findById(residentCharge.getId());
         if (residentCharge == null) return;
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -90,7 +104,7 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
         nameTextField.setText(residentCharge.getName());
         typeLabel.setText(residentCharge.getTypeOfCharge());
         createDateLabel.setText(localDateTime.format(fmt));
-        moneyTextField.setText(String.valueOf(residentCharge.getMoney()));
+        moneyValueLabel.setText(String.valueOf(residentCharge.getMoney()));
         descriptionTextField.setText(residentCharge.getDescription());
         sumChargeLabel.setText(String.valueOf(residentCharge.getSumCharge()));
         paidCountLabel.setText(String.valueOf(residentCharge.getHouseholdsPaidCount()));
@@ -98,21 +112,38 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
         // Danh sách hộ đã nộp
         listPaidVBox.getChildren().clear();
         residentCharge.getPaidHouseholdList().forEach(hh -> {
-            Label lbl = new Label(hh.getFullname() + "  –  " + hh.getAmountPaid() + " VND");
-            listPaidVBox.getChildren().add(lbl);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/PaidHouseholdCard.fxml"));
+                VBox card = loader.load();
+                PaidHouseholdCardController controller = loader.getController();
+                controller.setData(hh);
+                listPaidVBox.getChildren().add(card);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
+
     }
 
     private void handleUpdate() {
-        residentCharge.setName(nameTextField.getText());
-        if(residentCharge.getTypeOfCharge().equals("mandatory")) {
-            residentCharge.setMoney(Integer.parseInt(moneyTextField.getText()));
+        String name = nameTextField.getText().trim();
+        String description = descriptionTextField.getText().trim();
+
+        if (name.isEmpty() || description.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Thiếu thông tin");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập đầy đủ tên và mô tả khoản thu.");
+            alert.showAndWait();
+            return;
         }
-        residentCharge.setDescription(descriptionTextField.getText());
+
+        residentCharge.setName(name);
+        residentCharge.setDescription(description);
         residentChargeController.update(residentCharge);
         exitScene();
-
     }
+
 
     private void handleDelete() {
         if (residentCharge != null) {
@@ -128,10 +159,22 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
             }
         }
     }
+
+    private void handleCharge(){
+        ChargeViewController controller = new ChargeViewController(residentCharge);
+        controller.setParentController(this);
+        sceneManager.showViewWithController("/ChargeView.fxml", controller, "Thu phí");
+    }
+
     private void exitScene() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
         sceneManager.showViewWithOutController("/ResidentChargeView.fxml", "Quản lý khoản thu");
+    }
+
+    @Override
+    public void reload(){
+        this.populateFields();
     }
 }
 

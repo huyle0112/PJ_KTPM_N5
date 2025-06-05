@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox alignment="TOP_CENTER" prefHeight="89.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="confirmButton" mnemonicParsing="false" text="Xác nhận" />
+            <Region prefHeight="50.0" prefWidth="19.0" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="75.0" text="Hủy" />
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <GridPane prefHeight="331.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Khoản thu" GridPane.columnIndex="1" />
+            <ComboBox fx:id="residentChargesComboBox" prefHeight="39.0" prefWidth="87.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="338.0" minWidth="10.0" prefWidth="148.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="461.0" minWidth="10.0" prefWidth="262.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="204.0" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.0" minHeight="0.0" prefHeight="53.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="382.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="411.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+   <padding>
+      <Insets left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <top>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="62.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chọn loại khoản thu" wrappingWidth="230.6708984375">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
