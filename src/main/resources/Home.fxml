@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -14,29 +15,58 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #dff6fe;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Home.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(        to right,        #e0f7ff 0%, #e0f7ff 10%,        #c2e9fb 10%, #c2e9fb 20%,        #e0f7ff 20%, #e0f7ff 30%,        #c2e9fb 30%, #c2e9fb 40%,        #e0f7ff 40%, #e0f7ff 50%,        #c2e9fb 50%, #c2e9fb 60%,        #e0f7ff 60%, #e0f7ff 70%,        #c2e9fb 70%, #c2e9fb 80%,        #e0f7ff 80%, #e0f7ff 90%,        #c2e9fb 90%, #c2e9fb 100%    );;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Home.HomeController">
     <children>
-      <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-              <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
-                  <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chào mừng, Tổ trưởng!">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý chung cư BlueMoon" wrappingWidth="305.0">
-                          <font>
-                              <Font size="24.0" />
-                          </font>
-                      </Text>
-                      <Button fx:id="householdButton" mnemonicParsing="false" onAction="#openHouseholdView" prefHeight="40.0" prefWidth="200.0" text="Quản lý hộ khẩu" />
-                      <Button fx:id="citizenButton" mnemonicParsing="false" onAction="#openCitizenView" prefHeight="40.0" prefWidth="200.0" text="Quản lý nhân khẩu" />
-                      <Button fx:id="residentChargeButton" mnemonicParsing="false" onAction="#openResidentChargeView" prefHeight="40.0" prefWidth="200.0" text="Quản lý khoản thu" />
-                      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="200.0" text="Đăng xuất" />
-                  </children>
-              </VBox>
-         </center>
-      </BorderPane>
+        <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <VBox alignment="CENTER" prefHeight="379.0" prefWidth="411.0" spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: BLACK; -fx-border-radius: 20;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="#000bad" strokeType="OUTSIDE" strokeWidth="0.0" text="Chào mừng, Tổ trưởng!">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </Text>
+                        <Text fill="#000bad" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý chung cư BlueMoon" wrappingWidth="305.0">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="10.0" />
+                            </VBox.margin>
+                        </Text>
+                        <Button fx:id="householdButton" mnemonicParsing="false" onAction="#openHouseholdView" prefHeight="43.0" prefWidth="200.0" text="Quản lý hộ khẩu" />
+                        <Button fx:id="citizenButton" mnemonicParsing="false" onAction="#openCitizenView" prefHeight="40.0" prefWidth="200.0" text="Quản lý nhân khẩu" />
+                        <Button fx:id="residentChargeButton" mnemonicParsing="false" onAction="#openResidentChargeView" prefHeight="40.0" prefWidth="200.0" text="Quản lý khoản thu" />
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="200.0" text="Đăng xuất" />
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
+                    </padding>
+                </VBox>
+            </center>
+            <left>
+                <Region prefHeight="331.0" prefWidth="190.0" BorderPane.alignment="CENTER" />
+            </left>
+            <right>
+                <Region prefHeight="331.0" prefWidth="190.0" BorderPane.alignment="CENTER" />
+            </right>
+            <bottom>
+
+                <Region prefHeight="91.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <top>
+                <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                </HBox>
+            </top>
+           <children>
+               <Button fx:id="aaa" text="Đăng xuất" />
+           </children>
+        </BorderPane>
     </children>
 </AnchorPane>

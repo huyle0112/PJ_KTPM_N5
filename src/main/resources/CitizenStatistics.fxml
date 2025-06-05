@@ -1,25 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.chart.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="view.CitizenManagement.CitizenStatisticsViewController">
-    <top>
-        <Label text="BẢNG THỐNG KÊ NHÂN KHẨU" style="-fx-font-size: 20; -fx-padding: 10; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
-    </top>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.CitizenManagement.CitizenStatisticsViewController">
     <center>
-        <VBox spacing="20" alignment="CENTER">
-            <TableView fx:id="statisticsTable" prefHeight="200" prefWidth="400">
-                <columns>
-                    <TableColumn fx:id="typeColumn" text="Loại Nhân Khẩu" prefWidth="200"/>
-                    <TableColumn fx:id="countColumn" text="Số lượng" prefWidth="200"/>
-                </columns>
-            </TableView>
-            <PieChart fx:id="pieChart" prefHeight="300" prefWidth="400"/>
+        <VBox alignment="CENTER" spacing="20">
+           <children>
+               <TableView fx:id="statisticsTable" prefHeight="200" prefWidth="400">
+                   <columns>
+                       <TableColumn fx:id="typeColumn" prefWidth="200" text="Loại Nhân Khẩu" />
+                       <TableColumn fx:id="countColumn" prefWidth="200" text="Số lượng" />
+                   </columns>
+               </TableView>
+               <PieChart fx:id="pieChart" prefHeight="300" prefWidth="400" />
+           </children>
         </VBox>
     </center>
-    <bottom>
-        <Button text="Đóng" fx:id="closeButton" onAction="#onClose" style="-fx-padding: 10 30;" BorderPane.alignment="CENTER"/>
-    </bottom>
+   <left>
+      <Region prefHeight="520.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Region prefHeight="520.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="433.0" BorderPane.alignment="CENTER">
+         <children>
+              <Label prefHeight="7.0" prefWidth="293.0" text="BẢNG THỐNG KÊ NHÂN KHẨU">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="TOP_CENTER" prefHeight="59.0" prefWidth="411.0" BorderPane.alignment="CENTER">
+         <children>
+              <Button fx:id="closeButton" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClose" prefHeight="29.0" prefWidth="68.0" text="Đóng">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>

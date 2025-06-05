@@ -9,12 +9,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets left="20.0" right="20.0" top="20.0" />
    </padding>
    <top>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="321.0" BorderPane.alignment="CENTER">
+      <HBox alignment="BOTTOM_CENTER" prefHeight="62.0" prefWidth="299.0" BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nộp tiền" wrappingWidth="102.6708984375">
                <font>
@@ -25,9 +25,9 @@
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="88.0" prefWidth="321.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="299.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addChargeButton" mnemonicParsing="false" text="Add" />
+            <Button fx:id="addChargeButton" defaultButton="true" mnemonicParsing="false" text="Add" />
             <Region prefHeight="50.0" prefWidth="19.0" />
             <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="75.0" text="Cancel" />
          </children>
@@ -68,11 +68,11 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="403.0" prefWidth="213.0" spacing="20.0">
+            <VBox prefHeight="330.0" prefWidth="193.0" spacing="20.0">
                <children>
                   <Label fx:id="titleLabel" text="Label" />
                   <Label fx:id="amountM2Label" text="Label" />
-                  <ComboBox fx:id="roomComboBox" prefHeight="31.0" prefWidth="262.0" />
+                  <ComboBox fx:id="roomComboBox" prefHeight="31.0" prefWidth="183.0" />
                   <Label fx:id="areaValueLabel" />
                   <TextField fx:id="nameTextField" prefHeight="31.0" prefWidth="225.0" />
                   <TextField fx:id="moneyTextField" prefHeight="31.0" prefWidth="168.0" />
