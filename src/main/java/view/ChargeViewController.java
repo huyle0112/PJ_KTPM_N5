@@ -50,6 +50,12 @@ public class ChargeViewController implements BlueMoonViewController {
     @FXML
     private Label areaValueLabel;
 
+    private String preselectedRoom;
+
+    public void setPreselectedRoom(String roomNumber) {
+        this.preselectedRoom = roomNumber;
+    }
+
     private final java.util.Map<String, Room> roomMap = new java.util.HashMap<>();
 
 
@@ -66,7 +72,6 @@ public class ChargeViewController implements BlueMoonViewController {
     public void setParentController(BlueMoonViewController controller){
         this.blueMoonViewController = controller;
     }
-
     @FXML
     public void initialize() {
         sceneManager = new SceneManager();
@@ -98,6 +103,18 @@ public class ChargeViewController implements BlueMoonViewController {
         roomComboBox.setValue("Chọn số phòng");
         roomComboBox.setItems(roomNumbers);
         roomComboBox.setVisibleRowCount(3);
+        if (preselectedRoom != null && roomMap.containsKey(preselectedRoom)) {
+            roomComboBox.setValue(preselectedRoom);
+            Room selectedRoom = roomMap.get(preselectedRoom);
+            if (selectedRoom != null) {
+                areaValueLabel.setText(String.valueOf(selectedRoom.getArea()) + " m2");
+            } else {
+                areaValueLabel.setText("");
+            }
+            if(charge.getTypeOfCharge().equals("Mandatory")){
+                moneyTextField.setText(String.valueOf(selectedRoom.getArea() * charge.getMoney()));
+            }
+        }
         addChargeButton.setOnAction(this::handleAdd);
         cancelButton.setOnAction(this::handleCancel);
         roomComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {

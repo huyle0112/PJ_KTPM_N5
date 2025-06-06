@@ -11,7 +11,7 @@
       <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 20 0 20 0;" text="Khoản thu" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <GridPane alignment="CENTER" hgap="20" vgap="14">
+      <GridPane alignment="CENTER" hgap="20" prefHeight="463.0" prefWidth="800.0" vgap="14">
          <padding>
             <Insets bottom="30" left="80" right="80" top="30" />
          </padding>
@@ -20,14 +20,14 @@
             <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="36" />
-            <RowConstraints minHeight="90" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="36.0" />
+            <RowConstraints minHeight="90.0" />
          </rowConstraints>
          <children>
    
@@ -52,21 +52,20 @@
             <Label fx:id="paidCountLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
    
             <Label text="Hộ đã thu:" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.valignment="TOP" />
-            <ScrollPane prefHeight="90" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <content>
-                  <VBox fx:id="listPaidVBox" spacing="4">
-                     <padding>
-                        <Insets bottom="5" left="5" right="5" top="5" />
-                     </padding>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <Button fx:id="chargeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #0eda07;" text="Thu phí" textAlignment="CENTER" GridPane.rowIndex="7">
+            <Label fx:id="moneyValueLabel" />
+            <HBox prefHeight="24.0" prefWidth="498.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <children>
+                  <Button fx:id="chargeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #0eda07;" text="Thu phí" textAlignment="CENTER" />
+                  <Button fx:id="viewListButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="188.0" text="Xem chi tiết hộ đã nộp" />
+                  <Button fx:id="viewListNotChargeButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="147.0" text="Xem hộ chưa nộp" />
+               </children>
                <GridPane.margin>
-                  <Insets top="30.0" />
+                  <Insets />
                </GridPane.margin>
-            </Button>
-            <Label fx:id="moneyValueLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
          </children>
       </GridPane>
    </center>

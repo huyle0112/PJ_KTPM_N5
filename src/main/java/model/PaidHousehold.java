@@ -13,7 +13,7 @@ public class PaidHousehold {
     @SequenceGenerator(name = "paid_room_id_seq", sequenceName = "paid_room_id_seq", allocationSize = 1)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "roomid")
     private Room room;
 

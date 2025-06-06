@@ -50,7 +50,7 @@ public class SceneManager {
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("title");
+            stage.setTitle(title);
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

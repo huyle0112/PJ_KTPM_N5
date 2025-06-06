@@ -2,6 +2,9 @@ package view;
 
 import application.SceneManager;
 import controller.ResidentChargeController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,11 +13,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.PaidHousehold;
 import model.ResidentCharge;
+import model.Room;
 import org.hibernate.Session;
 import org.w3c.dom.events.Event;
 import service.GenericDAO;
 import service.HibernateUtil;
+import service.RoomDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,6 +74,12 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
     @FXML
     private Label moneyValueLabel;
 
+    @FXML
+    private Button viewListButton;
+
+    @FXML
+    private Button viewListNotChargeButton;
+
     private ResidentCharge residentCharge;
     private ResidentChargeController residentChargeController;
     private SceneManager sceneManager;
@@ -86,11 +98,14 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
             moneyValueLabel.setManaged(false);
             moneyLabel.setVisible(false);
             moneyLabel.setManaged(false);
+            viewListNotChargeButton.setVisible(false);
         }
         updateChargeButton.setOnAction(e -> handleUpdate());
         deleteButton.setOnAction(e -> handleDelete());
         cancelButton.setOnAction(e -> exitScene());
         chargeButton.setOnAction(e -> handleCharge());
+        viewListButton.setOnAction(event -> handleViewList());
+        viewListNotChargeButton.setOnAction(event -> handleViewListNotCharge());
     }
 
     private void populateFields() {
@@ -108,21 +123,18 @@ public class ChargeDetailsViewController implements Initializable, BlueMoonViewC
         descriptionTextField.setText(residentCharge.getDescription());
         sumChargeLabel.setText(String.valueOf(residentCharge.getSumCharge()));
         paidCountLabel.setText(String.valueOf(residentCharge.getHouseholdsPaidCount()));
+    }
 
-        // Danh sách hộ đã nộp
-        listPaidVBox.getChildren().clear();
-        residentCharge.getPaidHouseholdList().forEach(hh -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/PaidHouseholdCard.fxml"));
-                VBox card = loader.load();
-                PaidHouseholdCardController controller = loader.getController();
-                controller.setData(hh);
-                listPaidVBox.getChildren().add(card);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+    private void handleViewList(){
+        PaidHouseholdListViewController controller = new PaidHouseholdListViewController();
+        controller.setResidentCharge(residentCharge);
+        sceneManager.showViewWithController("/PaidHouseholdListView.fxml", controller,"Chi tiết thu phí");
+    }
 
+    private void handleViewListNotCharge(){
+        RoomNotChargeViewController controller = new RoomNotChargeViewController(residentCharge);
+        controller.setParentController(this);
+        sceneManager.showViewWithController("/RoomNotChargeView.fxml", controller, "Danh sách phòng chưa thu");
     }
 
     private void handleUpdate() {

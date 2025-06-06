@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Danh sách nộp tiền" />
+        <TableView fx:id="paidHouseholdTable" prefHeight="320.0" prefWidth="570.0">
+            <columns>
+                <TableColumn fx:id="roomColumn" prefWidth="80.0" text="Phòng" />
+                <TableColumn fx:id="payerColumn" prefWidth="120.0" text="Người nộp" />
+                <TableColumn fx:id="amountColumn" prefWidth="112.0" text="Số tiền" />
+                <TableColumn fx:id="dateColumn" prefWidth="257.0" text="Thời điểm nộp" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
