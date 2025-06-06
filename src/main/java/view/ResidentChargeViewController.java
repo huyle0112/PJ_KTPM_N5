@@ -145,6 +145,7 @@ public class ResidentChargeViewController implements Initializable, BlueMoonView
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
             Parent citizenView = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Trang chủ");
             Scene scene = new Scene(citizenView);
             stage.setScene(scene);
             stage.show();

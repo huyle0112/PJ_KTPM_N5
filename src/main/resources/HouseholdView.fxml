@@ -26,7 +26,7 @@
 				<Insets bottom="10" left="10" right="10" top="10" />
 			</padding>
 			<children>
-				<Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #d39947;" text="Trang chủ" />
+				<Button fx:id="homeButton" mnemonicParsing="false" onAction="#returnHome" style="-fx-background-color: #d39947;" text="Home" />
 				<TextField fx:id="searchField" prefHeight="25.0" prefWidth="190.0" promptText="Tìm theo tên chủ hộ" />
 				<Region HBox.hgrow="ALWAYS" />
 				<Button fx:id="addButton" styleClass="button-primary" text="Thêm hộ khẩu" />
