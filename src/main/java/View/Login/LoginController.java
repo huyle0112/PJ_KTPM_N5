@@ -55,9 +55,12 @@ public class LoginController implements Initializable {
                     
                     // Lấy stage hiện tại
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setTitle("Trang chủ");
                     
                     // Tạo scene mới với trang chính
                     Scene scene = new Scene(homeView);
+                    
+                    
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
